@@ -1,0 +1,223 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+
+<title>Newest Insights: Web, Android, Marketing & More - NEXEL Blog</title>
+<meta name="description" content="Stay updated with NEXEL's news & insights. We offer web & android development, digital marketing, videos, a student platform & NEXEL CampusConnect CRM.">
+<meta name="keywords" content="Software Development, Web Development, Android App Development, SEO Services, Digital Marketing, Branding Solutions, Mangalore Karnataka, India, Nexel-Blogs">
+<meta name="location" content="Mangalore, Karnataka, India">
+<meta name="author" content="Nexel-Futureize the Innovation">
+
+<!-- Social Media Meta Tags -->
+<meta property="og:title" content="Nexel: Innovative Software Development Company">
+<meta property="og:description" content="Leading software development company in Mangalore, Karnataka, offering web development, Android apps, SEO, digital marketing, and branding solutions.">
+<meta property="og:image" content=""> <!-- Add URL to your company logo or relevant image -->
+<meta property="og:url" content="https://www.nexel.in/">
+<meta name="twitter:card" content="summary_large_image">
+
+<!--Twitter-card-->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nexel - Futureize the innovation">
+<meta name="twitter:description" content="Leading software development company in Mangalore, Karnataka, offering web development, Android apps, SEO, digital marketing, and branding solutions.">
+<meta name="twitter:image" content="">
+
+<!-- Schema Markup for Local Business -->
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Nexel",
+        "description": "Leading software development company in Mangalore, Karnataka, specializing in web development, Android app development, SEO, digital marketing, and branding.",
+        "url": "https://www.nexel.in",
+        "logo": "/static/images/favicon.png",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Mangalore",
+            "addressRegion": "Karnataka",
+            "postalCode": "570001",
+            "addressCountry": "India"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-9778165158",
+            "contactType": "customer service"
+        }
+    }
+</script>
+
+{% endblock head %}
+
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+    <section class="pt-7">
+        <div class="container pt-3 pt-xl-5">
+            <!-- Slider START -->
+            <div class="swiper rounded" data-swiper-options='{
+                "effect": "fade",
+                "navigation":{
+                    "nextEl":".swiper-button-next",
+                    "prevEl":".swiper-button-prev"
+                },
+                "pagination":{
+                    "el":".swiper-pagination",
+                    "clickable":"true"
+                }}'>
+    
+                <!-- Slider items -->
+                <div class="swiper-wrapper">
+                    <!-- Slider item -->
+                     {% for scrollbar in scrollbar %}
+                    <div class="swiper-slide">
+                        <!-- Card item START -->
+                        <div class="card overflow-hidden h-500px text-center rounded-0" style="background-image:url({{scrollbar.image.url}}); background-position: center left; background-size: cover;">
+                            <!-- Background dark overlay -->
+                            <div class="bg-overlay bg-dark opacity-5"></div>
+                            <!-- Card image overlay -->
+                            <div class="card-img-overlay d-flex align-items-center p-2 p-sm-4"> 
+                                <div class="w-100 my-auto">
+                                    <div class="row justify-content-center">
+                                        <div class="col-11 col-lg-9">
+                                            <!-- Badge -->
+                                            <a href="{% url "BlogDetails" scrollbar.slug %}" class="badge text-bg-dark mb-4">{{scrollbar.category.name}}</a>
+                                            <!-- Title -->
+                                            <h1 class="h2 mb-4"><a href="{% url "BlogDetails" scrollbar.slug %}" class="text-white text-primary-hover">{{scrollbar.title}}</a></h1>
+                                            <ul class="nav nav-divider mb-0 justify-content-center small">
+                                                <li class="nav-item text-white"><a class="text-decoration-underline"><i class="bi bi-person me-2"></i>{{scrollbar.author}}</a></li>
+                                                <li class="nav-item text-white"><i class="bi bi-calendar me-2"></i>{{scrollbar.published_date.date}}</li>
+                                                <li class="nav-item text-white"><i class="bi bi-clock me-2"></i>{{scrollbar.read_time}} min read</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card item END -->
+                    </div>
+                    {% endfor %}
+                    
+                </div>	
+    
+                <!-- Slider Pagination -->
+                <div class="swiper-pagination swiper-pagination-white mb-3"></div>
+    
+                <!-- Add pagination and navigation elements here -->
+                <div class="d-flex justify-content-between position-absolute top-50 start-0 w-100 px-1 px-sm-3">
+                    <a href="#" class="btn btn-dark btn-icon rounded-circle mb-0 swiper-button-prev"><i class="bi bi-arrow-left"></i></a>
+                    <a href="#" class="btn btn-dark btn-icon rounded-circle mb-0 swiper-button-next"><i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>				
+            <!-- Slider END -->
+        </div>
+    </section>
+
+
+    <section class="pt-0">
+        <div class="container">
+            <div class="row g-xl-7">
+                <!-- Blog list START -->
+                <div class="col-lg-8">
+                    <!-- Title -->
+                    <h4 class="mb-4">Our Blog</h4>
+    
+                    {% for all_blogs in all_blogs %}
+                    <!-- Blog item -->
+                    <article class="card card-hover-shadow border p-3 mb-4">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <!-- Image -->
+                                <img src="{{all_blogs.image.url}}" class="img-fluid card-img" alt="blog-img">
+                            </div>
+                            <div class="col-md-8">
+                                <!-- Content -->
+                                <div class="card-body d-flex flex-column h-100 ps-0 pe-3">
+                                    <div><span class="badge text-bg-dark mb-3">{{all_blogs.category.name}}</span></div>
+                                    <h5 class="card-title mb-3 mb-md-0">{{all_blogs.title}}</h5>
+                                    <!-- Author name and button -->
+                                    <div class="d-sm-flex justify-content-between align-items-center mt-auto">
+                                        <p class="mb-2 heading-color fw-semibold">By {{all_blogs.author}}</p>
+                                        <a class="icon-link icon-link-hover stretched-link" href="{% url "BlogDetails" all_blogs.slug %}">Read more<i class="bi bi-arrow-right"></i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                    
+                    
+                </div>
+                <!-- Blog list END -->
+    
+                <!-- Sidebar START -->
+                <div class="col-lg-4 mt-5 mt-lg-0">
+                    <!-- Subscribe box -->
+                    <div class="card card-body bg-light p-4">
+                        <!-- Svg icon -->
+                        <svg class="mb-3" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_1113_392)">
+                            <path class="fill-primary" d="M22.5492 24.7427C23.8548 25.6131 26.1456 25.6132 27.4515 24.7426C27.4517 24.7425 27.452 24.7423 27.4522 24.7422L49.7048 9.90706C48.9749 7.79611 46.9686 6.27539 44.6128 6.27539H5.38754C3.03156 6.27539 1.0254 7.79611 0.29541 9.90706L22.5485 24.7423C22.5488 24.7425 22.549 24.7425 22.5492 24.7427Z"></path>
+                            <path class="fill-mode" d="M29.077 27.1812C29.0767 27.1814 29.0765 27.1816 29.0763 27.1817C27.9335 27.9435 26.4665 28.3244 25 28.3244C23.5332 28.3244 22.0668 27.9436 20.9239 27.1816C20.9237 27.1815 20.9236 27.1814 20.9234 27.1813L0 13.2324V38.3373C0 41.3077 2.41672 43.7244 5.38735 43.7244H44.6128C47.5834 43.7244 50 41.3077 50 38.3373V13.2324L29.077 27.1812Z"></path>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_1113_392">
+                            <rect width="50" height="50" fill="white"></rect>
+                            </clipPath>
+                            </defs>
+                        </svg>
+                        <!-- Title -->
+                        <h6 class="mb-3">Get the latest Nexel article delivered to your inbox</h6>
+                        <!-- Newsletter -->
+                        <form id="subscribe-form" method="post">
+                            {% csrf_token %}
+                            <input class="form-control mb-3" type="email" name="email" placeholder="Enter your email address" required>
+                            <button type="submit" class="btn btn-primary mb-0 d-grid">Subscribe now!</button>
+                            <div id="message"></div>
+                        </form>
+                    </div>
+    
+                    <!-- Advertisement -->
+                    <div class="card text-bg-dark mt-5">
+                        {% for ad in ads_image %}
+                        <img src="{{ ad.img.url }}" class="card-img" alt="Nexel-Advertisement">
+                        {% endfor %}
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">Advertisement</h5>
+                        </div>
+                    </div>
+    
+                    <!-- Social button -->
+                    <div class="mt-5">
+                        <h6 class="mb-3">Follow us on:</h6>
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item"> <a class="btn btn-round bg-instagram" href="https://www.instagram.com/nexel.in/"><i class="fab fa-fw fa-instagram lh-base"></i></a> </li>
+                            <li class="list-inline-item"> <a class="btn btn-round bg-linkedin" href="https://www.linkedin.com/company/nexel-futureize-the-innovation/"><i class="fab fa-fw fa-linkedin-in lh-base"></i></a> </li>
+                            <li class="list-inline-item"> <a class="btn btn-round bg-youtube" href="https://www.youtube.com/@kodnex"><i class="fab fa-fw fa-youtube lh-base"></i></a> </li>
+                        </ul>
+                    </div>
+    
+                    <!-- Popular tags -->
+                    <div class="align-items-center mt-5">
+                        <h6 class="mb-3 d-inline-block">Popular Tags:</h6>
+                        <ul class="list-inline mb-0 social-media-btn">
+                            {% for category in category %}
+                            <li class="list-inline-item"> <a class="btn btn-light btn-sm" href="">{{category.name}}</a> </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+    
+                </div>
+                <!-- Sidebar END -->
+    
+                
+            </div>
+        </div>
+    </section>
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

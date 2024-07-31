@@ -1,0 +1,72 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+
+<main>
+    <section class="pt-8 pt-xl-8">
+        <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-9 col-lg-6 text-center mx-auto">
+                        <!-- Svg -->
+                        
+
+                        <h2 class="mb-5">Login</h2>
+                        {% if messages %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {% for message in messages %}
+                            <strong>{{username}} </strong> {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        <br>
+                        <form method="post" >
+                            {% csrf_token %}
+							<!-- Email -->
+							<div class="input-floating-label form-floating mb-4">
+								<input type="text" class="form-control" name="username" id="floatingInput" placeholder="Username">
+								<label for="floatingInput">Username</label>
+							</div>
+
+							<!-- Password -->
+							<div class="input-floating-label form-floating mb-4 position-relative">
+								<input type="password" name="password" class="form-control fakepassword pe-6" id="psw-input" placeholder="Enter your password">
+								<label for="floatingInput">Password</label>
+								<span class="position-absolute top-50 end-0 translate-middle-y p-0 me-2">
+									<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
+								</span>
+							</div>
+
+							<!-- Check box -->
+							<div class="mb-4 d-flex justify-content-between">
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input" id="checkbox-1">
+									<label class="form-check-label" for="checkbox-1">Remember me</label>
+								</div>
+
+								<a href="{% url "forget_password" %}" class="link-underline-primary"> Forgot password?</a>
+							</div>
+
+							<!-- Button -->
+							<div class="align-items-center mt-0">
+								<div class="d-grid">
+									<button class="btn btn-dark mb-0" type="submit">Login</button>
+								</div>
+							</div>
+						</form>
+
+
+
+                    </div>
+                </div>
+        </div>
+    </section>
+</main>
+
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

@@ -1,0 +1,126 @@
+{% extends "admin_templates/base/base.html" %} {% load static %} {% block body %}
+
+<!-- [ Header ] end --><!-- [ Main Content ] start -->
+<div class="pc-container">
+    <div class="pc-content">
+        <div class="row">
+
+           
+ 
+
+
+
+
+            <!-- [ basic-table ] start -->
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <h5 class="mb-3 mb-sm-0">All Leads list</h5>
+                            
+                        </div>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive" id="pc-dt-filter">
+                            <table class="table" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center">Name</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Mobile</th>
+                                        <th class="text-center">Internship F0r</th>
+                                        <th class="text-center">College</th>
+                                        <th class="text-center">Registration Date</th>
+                                        <th class="text-center">Action</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for all_leads in all_leads %}
+
+                                    
+                                    
+                                    <tr>
+                                        <td class="text-center">{{all_leads.id}}</td>
+                                        <td class="text-center">{{all_leads.name}}</td>
+                                        <td class="text-center">{{all_leads.email}}</td>
+                                        <td class="text-center">{{all_leads.phone}}</td>
+                                        <td class="text-center">{{all_leads.internship_for}}</td>
+                                        <td class="text-center">{{all_leads.college_name}}</td>
+                                        <td class="text-center">{{all_leads.submitted_at.date}}</td>
+                                        <td class="text-center"><button data-row="0" class="btn btn-success convertintern btn-sm ms-3">Convert to Intern</button></td>
+                                        
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<!-- [Page Specific JS] start -->
+<script src="{% static 'admin_assets/assets/js/plugins/simple-datatables.js' %}"></script>
+<script>
+    const dataTable = new simpleDatatables.DataTable("#dataTable", {
+        perPage: 10, // Number of items per page
+        perPageSelect: [5, 10, 15, 20,50,100], 
+        filters: {
+            Job: ["Assistant", "Manager"],
+        },
+        pagination: true 
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.btn-success').click(function() {
+                const button = $(this);
+                const row = button.closest('tr');
+                const id = row.find('td').eq(0).text();
+                const name = row.find('td').eq(1).text();
+                const email = row.find('td').eq(2).text();
+                const phone = row.find('td').eq(3).text();
+                const internship_for = row.find('td').eq(4).text();
+                const college_name = row.find('td').eq(5).text();
+                const submitted_at = row.find('td').eq(6).text();
+
+                button.prop('disabled', true); // Disable the button
+
+                $.ajax({
+                    url: '/admin/convert-to-intern/',
+                    type: 'POST',
+                    data: {
+                        'id':id,
+                        'name': name,
+                        'email': email,
+                        'phone': phone,
+                        'internship_for': internship_for,
+                        'college_name': college_name,
+                        'submitted_at': submitted_at,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                    success: function(response) {
+                        alert('Application converted to internship assigned successfully!');
+                        location.reload()
+                    },
+                    error: function(response) {
+                        alert('Error in converting application to internship assigned.');
+                        button.prop('disabled', false); // Re-enable the button on error
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+{% endblock body %}
+</div>
+</div>

@@ -1,0 +1,77 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Intern Dashboard</title>
+
+{% endblock head %}
+
+
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+
+<main>
+    <section class="pt-sm-7">
+        <div class="container pt-3 pt-xl-5">
+            <div class="row">
+                {% include "career_dashboard/sidebar.html" %}
+                <!-- Main content -->
+                <div class="col-lg-8 col-xl-9 ps-lg-4 ps-xl-6">
+                    <!-- Title and offcanvas button -->
+                    <div class="d-flex justify-content-between align-items-center mb-5 mb-sm-6">
+                        <!-- Title -->
+                        <h1 class="h3 mb-0">Notification</h1>
+    
+                        <!-- Advanced filter responsive toggler START -->
+                        <button class="btn btn-primary d-lg-none flex-shrink-0 ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                            <i class="fas fa-sliders-h"></i> Menu
+                        </button>
+                     <!-- Advanced filter responsive toggler END -->
+                    </div>
+    
+                    <div class="card-body px-0 mt-3">
+                        <!-- Master card -->
+
+                        
+                        
+
+                        <div class="border rounded p-4 mb-4">
+                            <div class="d-sm-flex align-items-center">
+                                
+
+                                <div class="flex-grow-1 ms-sm-3">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm mb-3 mb-sm-0">
+                                            <p class="heading-color fw-normal mb-0">Web Development</p>
+                                            <small class="text-muted">Start Date - July 23, 2024</small>
+                                        </div>
+                                        <!-- End Col -->
+
+                                        <div class="col-sm-auto">
+                                            <div class="d-flex gap-3">
+                                                <a type="button" href="/intern_dash/all_internship/web-development" class="btn btn-sm btn-white border mb-0"> <i class="bi-eye me-1"></i> View </a>
+                                            </div>
+                                        </div>
+                                        <!-- End Col -->
+                                    </div>
+                                    <!-- End Row -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

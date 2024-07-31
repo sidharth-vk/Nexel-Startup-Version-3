@@ -1,0 +1,331 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+{% for data in data %}
+    <title>Internship : {{data.title}}</title>
+    <!-- Meta Description -->
+    <meta name="description" content="Discover internship details and join our team for an exciting opportunity today.">
+    <!-- Meta Keywords (Note: Meta keywords are not as relevant for SEO as they used to be) -->
+    <meta name="keywords" content="{{data.title}}, software internship, Nexel, technology career, coding experience, real-world projects">
+
+
+	<!-- Social Media Meta Tags -->
+	<meta property="og:title" content="{{data.title}} internship at Nexel">
+	<meta property="og:description" content="{{data.title}}, tech internship program, internship opportunities, coding internships, software development experience, Nexel, technology careers, hands-on learning.">
+	<meta property="og:image" content="{{data.img.url}}"> <!-- Add URL to your company logo or relevant image -->
+	<meta property="og:url" content="https://www.nexel.in/career/internship/{{data.slug}}">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<!--Twitter-card-->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="{{data.title}} internship at Nexel">
+	<meta name="twitter:description" content="{{data.title}}, tech internship program, internship opportunities, coding internships, software development experience, Nexel, technology careers, hands-on learning.">
+	<meta name="twitter:image" content="{{data.img.url}}">
+
+	<!-- Schema Markup for Local Business -->
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org",
+			"@type": "LocalBusiness",
+			"name": "Nexel: Internship Opportunities",
+			"description": "Software engineering internships, tech internship program, internship opportunities, coding internships, software development experience, Nexel, technology careers, hands-on learning.",
+			"url": "https://www.nexel.in/career/internship",
+			"logo": "{% static 'assets/images/favicon.ico' %}",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Mangalore",
+				"addressRegion": "Karnataka",
+				"postalCode": "570001",
+				"addressCountry": "India"
+			},
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"telephone": "+91-9778165158",
+				"contactType": "customer service"
+			}
+		}
+	</script>
+{% endfor %}
+{% endblock head %}
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+<main>
+    {% for data in data %}
+    <!-- =======================
+    Career detail START -->
+    <section class="pt-8">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-xl-8 mx-auto">
+                    <!-- Breadcrumb & title -->
+                    <div class="text-center mb-5">
+                        <!-- Breadcrumb -->
+                        <div class="d-flex justify-content-center mb-2">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb breadcrumb-dots mb-1">
+                                    <li class="breadcrumb-item"><a href="{% url "homepage" %}">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{data.category}}</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <!-- Title -->
+                        <h2>{{data.title}}</h2>
+                    </div>
+    
+                    <!-- Info -->
+                    <div class="card card-body bg-dark d-md-flex justify-content-md-between align-items-md-center flex-md-row p-5 mb-6" data-bs-theme="dark">
+                        <div class="mb-3 mb-md-0">
+                            <!-- Title -->
+                            <h4 class="mb-0">Information</h4>
+                            <!-- List -->
+                            <div class="hstack gap-3 gap-md-4 flex-wrap mt-3">
+                                <span class="badge text-bg-white">Last Modified: {{data.last_modified.date}}</span>
+                                <span><i class="bi bi-geo-alt me-2"></i>{{data.mode}}</span>
+                                <span><i class="bi bi-clock me-2"></i>{{data.duration}}</span>
+                                <span><i class="bi bi-briefcase me-2"></i>{{data.stipend}}</span>
+                            </div>
+                        </div>	
+                        <!-- Button -->
+                        <a href="#contact-form" class="btn btn-primary mb-0">Apply now<i class="bi bi-arrow-right ms-2"></i></a>
+                    </div>
+    
+                    <!-- Detail list -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Skills:</h6>
+                            <ul class="list-group list-group-borderless mb-4">
+                                {% for skills in skills %}
+                                <li class="list-group-item d-flex mb-0"><i class="bi bi-patch-check text-primary me-2"></i><p><b>{{skills.name}}</b> {{skills.des}}</p></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+    
+                        <div class="col-md-12">
+                            <h6>Responsibilities:</h6>
+                            <ul class="list-group list-group-borderless mb-4">
+                                {% for responsibility in responsibility %}
+                                <li class="list-group-item d-flex mb-0"><i class="bi bi-patch-check text-primary me-2"></i><p><b>{{responsibility.name}}</b> {{responsibility.des}}</p></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <h6>Experience:</h6>
+                            <ul class="list-group list-group-borderless mb-4">
+                                {% for experience in experiences %}
+                                <li class="list-group-item mb-0"><p><i class="bi bi-patch-check text-primary me-2"></i><b>{{experience.name}}</b></p> {{experience.des}}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <h6>Educational requirements:</h6>
+                            <p>{{data.edu}}</p>
+                        </div>
+                    </div>
+    
+                    <!-- Description -->
+                    <h6 class="mt-4">Description</h6>
+                    {{data.des|safe}}
+                    <!-- Email detail -->
+                    <div class="row mt-5">
+                        <div class="col-md-6">
+                            <h6>Apply via E-mail</h6>
+                            <p>If you need to send us mail regarding job opportunities, please write to us at <a href="#">nexel.cd@gmail.com</a> for more information.</p>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <h6>Apply via phone number</h6>
+                            <p class="mb-1">Apply Now Via Whats App, Send us Your Resume on:</p>
+                            <a href="#">+91 9778165158</a>
+                        </div>
+                    </div>
+    
+                    
+                    <!-- Form -->
+                    <div class="card card-body bg-light border p-sm-5 mt-5" id="contact-form">
+    
+                        <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
+                            <strong>Success</strong> You Have successfully Registerd for {{data.title}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        <form class="row mt-1 g-4">
+                            {% csrf_token %}
+                            <div class="col-md-6">
+                                <label class="form-label heading-color">Your name *</label>
+                                <input type="text" name="name" class="form-control form-control-lg" required placeholder="Full name">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label heading-color">Email address *</label>
+                                <input type="email" name="email" class="form-control form-control-lg" required id="floatingInput" placeholder="name@example.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label heading-color">Phone number *</label>
+                                <input type="text" name="phone" class="form-control form-control-lg"  required placeholder="(xxx) xx xxxx">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label heading-color">Internship For *</label>
+                                <input type="text" name="internship_for" class="form-control form-control-lg" required placeholder="{{data}}" value="{{data}}" readonly>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label heading-color">College Name *</label>
+                                <input type="text" name="college_name" class="form-control form-control-lg" required placeholder="College Name">
+                            </div>
+                            <!-- Button -->
+                            <div class="col-12 d-grid">
+                                <button type="submit" class="btn btn-lg btn-primary mb-0">Send a message</button>
+                            </div>	
+                        </form>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- =======================
+    Career detail END -->
+    {% endfor %}
+
+
+{% comment %}     
+    <section class="pt-0">
+        <div class="container">
+            <div class="row">
+                <!-- Title -->
+                <div class="col-md-5">
+                    <h2 class="mb-5">You have questions we have answers</h2>
+                </div>
+    
+                <div class="col-md-7">
+                    <!-- Accordion START -->
+                    <div class="accordion accordion-icon accordion-bg-light" id="accordionFaq">
+                        <!-- Item -->
+                        <div class="accordion-item mb-3">
+                            <div class="accordion-header font-base" id="heading-1">
+                                <button class="accordion-button fw-semibold rounded collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
+                                    How many items are there on this list?
+                                </button>
+                            </div>
+                            <!-- Body -->
+                            <div id="collapse-1" class="accordion-collapse collapse" aria-labelledby="heading-1" data-bs-parent="#accordionFaq" style="">
+                                <div class="accordion-body mt-3 pb-0">
+                                    Was out laughter raptures returned outweigh. Luckily cheered colonel I do we attack highest enabled. Tried law yet style child. The bore of true of no be deal. Drawings offended yet answered Jennings perceive laughing six did far. Rooms oh fully taken by worse do. Points afraid but may end law lasted.
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Item -->
+                        <div class="accordion-item mb-3">
+                            <div class="accordion-header font-base" id="heading-2">
+                                <button class="accordion-button fw-semibold rounded collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+                                    Can you describe Mizzle in just one sentence?
+                                </button>
+                            </div>
+                            <!-- Body -->
+                            <div id="collapse-2" class="accordion-collapse collapse" aria-labelledby="heading-2" data-bs-parent="#accordionFaq" style="">
+                                <div class="accordion-body mt-3 pb-0">
+                                    September how men saw tolerably two behavior arranging. She offices for highest and replied one venture pasture. Applauded no discovery in newspaper allowance am northward. Frequently partiality possession resolution at or appearance unaffected me. Engaged its was the evident pleased husband. Ye goodness felicity do disposal dwelling no. First am plate jokes to began to cause a scale. Subjects he prospect elegance followed no overcame possible it on. Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage Mr be.
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Item -->
+                        <div class="accordion-item mb-3">
+                            <div class="accordion-header font-base" id="heading-3">
+                                <button class="accordion-button fw-semibold rounded collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+                                    Can I use this theme for my client?
+                                </button>
+                            </div>
+                            <!-- Body -->
+                            <div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#accordionFaq" style="">
+                                <div class="accordion-body mt-3 pb-0">
+                                    How men saw tolerably two behavior arranging. She offices for highest and replied one venture pasture. Applauded no discovery in newspaper allowance am northward. Frequently partiality possession resolution at or appearance unaffected me. Engaged its was the evident pleased husband. Ye goodness felicity do disposal dwelling no. First am plate jokes to began to cause a scale. Subjects he prospect elegance followed no overcame possible it on. Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage Mr be. Hold do at tore in park feet near my case. Invitation at understood occasional sentiments insipidity inhabiting in. Off melancholy alteration principles old. Is do speedily kindness properly oh. Respect article painted cottage he is offices parlors.
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Item -->
+                        <div class="accordion-item mb-3">
+                            <div class="accordion-header font-base" id="heading-4">
+                                <button class="accordion-button fw-semibold rounded collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+                                    Do you offer themes in other categories?
+                                </button>
+                            </div>
+                            <!-- Body -->
+                            <div id="collapse-4" class="accordion-collapse collapse" aria-labelledby="heading-4" data-bs-parent="#accordionFaq" style="">
+                                <div class="accordion-body mt-3 pb-0">
+                                    But her ready least set lived spite solid. September how men saw tolerably two behavior arranging. She offices for highest and replied one venture pasture. Applauded no discovery in newspaper allowance am northward. Frequently partiality possession resolution at or appearance unaffected me. Engaged its was the evident pleased husband. Ye goodness felicity do disposal dwelling no. First am plate jokes to began to cause a scale. Subjects he prospect elegance followed no overcame possible it on. Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage Mr be.
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Item -->
+                        <div class="accordion-item mb-3">
+                            <div class="accordion-header font-base" id="heading-5">
+                                <button class="accordion-button fw-semibold rounded collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
+                                    Do I need to credit you when I use this theme?
+                                </button>
+                            </div>
+                            <!-- Body -->
+                            <div id="collapse-5" class="accordion-collapse collapse" aria-labelledby="heading-5" data-bs-parent="#accordionFaq" style="">
+                                <div class="accordion-body mt-3 pb-0">
+                                    But her ready least set lived spite solid. September how men saw tolerably two behavior arranging. She offices for highest and replied one venture pasture. Applauded no discovery in newspaper allowance am northward. Frequently partiality possession resolution at or appearance unaffected me. Engaged its was the evident pleased husband. Ye goodness felicity do disposal dwelling no. First am plate jokes to began to cause a scale. Subjects he prospect elegance followed no overcame possible it on. Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage Mr be.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion END -->
+                </div>
+            </div>
+        </div>
+    </section> {% endcomment %}
+    
+
+    </main>
+
+    <!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('form').on('submit', function(event) {
+        event.preventDefault();  // Prevent the default form submission
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url "submit_internship" %}',
+            data: {
+                'name': $('input[name="name"]').val(),
+                'email': $('input[name="email"]').val(),
+                'phone': $('input[name="phone"]').val(),
+                'internship_for': $('input[name="internship_for"]').val(),
+                'college_name': $('input[name="college_name"]').val(),
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response) {
+                if (response.status == 'success') {
+                    $('#success-alert').show();
+                    // Clear the form fields
+                    $('input[name="name"]').val('');
+                    $('input[name="email"]').val('');
+                    $('input[name="phone"]').val('');
+                    $('input[name="internship_for"]').val('{{data.title}}');  // Reset to initial value
+                    $('input[name="college_name"]').val('');
+                } else {
+                    alert('Error: ' + response.message);
+                }
+            },
+            error: function(response) {
+                alert('An error occurred. Please try again.');
+            }
+        });
+    });
+});
+</script>
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

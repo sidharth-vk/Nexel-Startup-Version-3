@@ -1,0 +1,205 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block head %}
+
+<title>Nexel’s Innovative Solutions</title>
+<meta name="description" content="Nexel : Software Company in Mangalore, India. Experts in web & Android development, SEO, digital marketing & branding. Partner with us for digital solutions.">
+<meta name="keywords" content="Software Development, Web Development, Android App Development, SEO Services, Digital Marketing, Branding Solutions, Mangalore Karnataka, India,">
+<meta name="location" content="Mangalore, Karnataka, India">
+<meta name="author" content="Nexel-Futureize the Innovation">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="theme-color" content="#e8f1ff">
+
+
+<!-- Social Media Meta Tags -->
+<meta property="og:title" content="Nexel: Innovative Software Development Company">
+<meta property="og:description" content="Leading software development company in Mangalore, Karnataka, offering web development, Android apps, SEO, digital marketing, and branding solutions.">
+<meta property="og:image" content="{% static "assets/image/banner/logo/nexel_light.png" %}"> <!-- Add URL to your company logo or relevant image -->
+<meta property="og:url" content="https://www.nexel.in/">
+<meta name="twitter:card" content="summary_large_image">
+
+
+<!--Twitter-card-->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nexel - Futureize the innovation">
+<meta name="twitter:description" content="Leading software development company in Mangalore, Karnataka, offering web development, Android apps, SEO, digital marketing, and branding solutions.">
+<meta name="twitter:image" content="{% static "assets/image/banner/logo/nexel_light.png" %}">
+
+
+<!-- Schema Markup for Local Business -->
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Nexel",
+        "description": "Leading software development company in Mangalore, Karnataka, specializing in web development, Android app development, SEO, digital marketing, and branding.",
+        "url": "https://www.nexel.in",
+        "logo": "{% static 'assets/images/favicon.ico' %}",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Mangalore",
+            "addressRegion": "Karnataka",
+            "postalCode": "570001",
+            "addressCountry": "India"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-9778165158",
+            "contactType": "customer service"
+        }
+    }
+</script>
+
+{% endblock head %}
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+
+<main>
+    <section class="pt-lg-8 pt-xl-9">
+        <div class="container pt-4 pt-lg-0">
+            <!-- Title -->
+            <div class="inner-container-small text-center mb-4 mb-lg-6">
+                <h1 class="mb-4">Nexel’s Innovative Solutions</h1>
+                <p>Streamline Your Customer Relationships with Our Advanced CRM System</p>
+            </div>
+    
+            <!-- Images -->
+            <div class="d-flex justify-content-center align-items-center gap-2 gap-sm-4">
+                <!-- Icon -->
+                <div class="icon-md text-center shadow-sm bg-white rounded-circle flex-shrink-0 d-none d-md-block">
+                    <img src="{% static "assets/images/elements/gicon.svg" %}" class="w-20px" alt="">
+                </div>
+    
+                <!-- Icon -->
+                <div class="icon-lg text-center shadow-sm bg-white rounded-circle flex-shrink-0 d-none d-sm-block">
+                    <img src="{% static "assets/images/elements/mailchimp.svg" %}" class="w-30px" alt="">
+                </div>
+    
+                <!-- Icon -->
+                <div class="icon-xl text-center shadow-sm bg-white rounded-circle flex-shrink-0">
+                    <img src="{% static "assets/images/elements/slack.svg" %}" class="w-50px" alt="">
+                </div>
+    
+                <!-- Icon -->
+                <div class="icon-xxl text-center shadow-sm bg-white rounded-circle flex-shrink-0 btn-ripple" style="line-height: 6.8rem;">
+                    <img src="{% static "assets/images/nexel_logo_dark.png" %}" class="w-80px" alt="">
+                </div>
+    
+                <!-- Icon -->
+                <div class="icon-xl text-center shadow-sm bg-white rounded-circle flex-shrink-0">
+                    <img src="{% static "assets/images/elements/dropbox.svg" %}" class="w-50px" alt="">
+                </div>
+    
+                <!-- Icon -->
+                <div class="icon-lg text-center shadow-sm bg-white rounded-circle flex-shrink-0 d-none d-sm-block">
+                    <img src="{% static "assets/images/elements/webflow.svg" %}" class="w-30px" alt="">
+                </div>
+    
+                <!-- Icon -->
+                <div class="icon-md text-center shadow-sm bg-white rounded-circle flex-shrink-0 d-none d-md-block">
+                    <img src="{% static "assets/images/elements/reddit.svg" %}" class="w-20px" alt="">
+                </div>
+            </div>
+        </div>	
+    </section>
+
+
+    <section class="pt-0">
+        <div class="container">
+    
+            <!-- Title -->
+            <div class="d-lg-flex justify-content-between align-items-center mb-4 mb-lg-5">
+                <!-- Title -->
+                <h4 class="mb-3 mb-lg-0">Explore Products</h4>
+                
+            </div>
+    
+            <!-- Integration items START -->
+            <div class="row g-4 g-lg-5">
+
+                <!-- Item -->
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    <div class="card card-hover-shadow border-primary-hover border h-100 p-4">
+                        <div class="card-body p-0">
+                            <!-- Logo -->
+                            <div class="d-flex gap-3 align-items-center mb-3">
+                                <h6 class="mb-0">Nexel Drive Master</h6>
+                            </div>
+                            <p>All in one Integrated platform to grow your Vehicle rental Buisness </p>
+                        </div>
+        
+                        <div class="card-footer bg-transparent p-0 mt-6">
+                            <a href="{% url "drivemaster" %}" class="icon-link icon-link-hover heading-color text-primary-hover stretched-link mb-0">View More<i class="bi bi-arrow-right"></i> </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item -->
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    <div class="card card-hover-shadow border-primary-hover border h-100 p-4">
+                        <div class="card-body p-0">
+                            <!-- Logo -->
+                            <div class="d-flex gap-3 align-items-center mb-3">
+                                <h6 class="mb-0">Nexel Global Connect</h6>
+                            </div>
+                            <p>All in one Integrated platform to grow your Abroad overseas Agency </p>
+                        </div>
+        
+                        <div class="card-footer bg-transparent p-0 mt-6">
+                            <a href="{% url "contact_us" %}" class="icon-link icon-link-hover heading-color text-primary-hover stretched-link mb-0">Contact US<i class="bi bi-arrow-right"></i> </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item -->
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    <div class="card card-hover-shadow border-primary-hover border h-100 p-4">
+                        <div class="card-body p-0">
+                            <!-- Logo -->
+                            <div class="d-flex gap-3 align-items-center mb-3">
+                                <h6 class="mb-0">NexelCare</h6>
+                            </div>
+                            <p>All in one Integrated platform For Managing Hospital Booking System </p>
+                        </div>
+        
+                        <div class="card-footer bg-transparent p-0 mt-6">
+                            <a href="{% url "contact_us" %}" class="icon-link icon-link-hover heading-color text-primary-hover stretched-link mb-0">Contact US<i class="bi bi-arrow-right"></i> </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item -->
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    <div class="card card-hover-shadow border-primary-hover border h-100 p-4">
+                        <div class="card-body p-0">
+                            <!-- Logo -->
+                            <div class="d-flex gap-3 align-items-center mb-3">
+                                <h6 class="mb-0">Nexel HRM</h6>
+                            </div>
+                            <p>All in one Integrated platform For Human Resource Management </p>
+                        </div>
+        
+                        <div class="card-footer bg-transparent p-0 mt-6">
+                            <a href="{% url "contact_us" %}" class="icon-link icon-link-hover heading-color text-primary-hover stretched-link mb-0">Contact US<i class="bi bi-arrow-right"></i> </a>
+                        </div>
+                    </div>
+                </div>
+        
+                
+            </div>	
+            <!-- Integration items END -->
+    
+        </div>
+    </section>
+    
+
+    
+</main>
+
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

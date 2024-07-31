@@ -1,0 +1,116 @@
+
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+
+    <title>NEXEL Portfolio: Showcasing Our Expertise in Web & Digital Marketing</title>
+    <meta name="description" content="Discover Nexel's Portfolio: Web Development, Android App Development, HRMS, SEO, Digital Marketing, Branding Solutions, and more. See how we bring ideas to life with innovative solutions.">
+    <meta name="keywords" content="Nexel Portfolio, Web Development Projects, Android App Development Projects, HRMS, SEO Projects, Digital Marketing Campaigns, Branding Solutions, CRM Development, Appointment Booking System, Professional Dashboard, Mangalore Karnataka, India">
+    <meta name="location" content="Mangalore, Karnataka, India">
+    <meta name="author" content="Nexel-Futureize the Innovation">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Nexel: Showcasing Our Expertise in Web & Digital Marketing">
+    <meta property="og:description" content="Explore Nexel's Portfolio: Web Development, Android App Development, HRMS, SEO, Digital Marketing, Branding Solutions, and more.">
+    <meta property="og:image" content="{{ads.image.url}}"> <!-- Add URL to your company logo or relevant image -->
+    <meta property="og:url" content="https://www.nexel.in/portfolio/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Twitter-card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nexel - Showcasing Our Expertise">
+    <meta name="twitter:description" content="Explore Nexel's Portfolio: Web Development, Android App Development, HRMS, SEO, Digital Marketing, Branding Solutions, and more.">
+    <meta name="twitter:image" content="{{ads.image.url}}">
+
+    <!-- Schema Markup for Local Business -->
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Nexel",
+            "description": "Leading software development company in Mangalore, Karnataka, specializing in web development, Android app development, SEO, digital marketing, and branding.",
+            "url": "https://www.nexel.in/portfolio/",
+            "logo": "{% static 'assets/images/favicon.ico' %}",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Mangalore",
+                "addressRegion": "Karnataka",
+                "postalCode": "570001",
+                "addressCountry": "India"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-9778165158",
+                "contactType": "customer service"
+            }
+        }
+    </script>
+
+{% endblock head %}
+{% block body %}
+{% include "base/navbar_light.html" %}
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+    
+
+    <section class="pt-lg-8">
+        <div class="container pt-4 pt-lg-0">
+            <!-- Breadcrumb & title -->
+            <div class="inner-container left mb-5">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-dots mb-1">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Portfolio Showcase</li>
+                    </ol>
+                </nav>
+                <!-- Title -->
+                <h1 class="h2">Portfolio Showcase</h1>
+            </div>
+    
+            <!-- Portfolio item START -->
+            <div class="row g-sm-6">
+                {% for details in details %}
+                <!-- Item -->
+                <div class="col-md-6 mb-5 mb-md-0">
+                    <div class="card card-img-scale bg-transparent overflow-hidden">
+                        <!-- Logo -->
+                        <div class="position-absolute top-0 start-0 z-index-1">
+                            <img src="{% static "assets/image/banner/logo/nexel_dark.png" %}" class="h-40px m-4" alt="">
+                        </div>
+    
+                        <div class="card-img-scale-wrapper rounded-3">
+                            <!-- Card Image -->              
+                            <img src="{{details.cardimg.url}}" class="img-scale" alt="portfolio-img">
+                        </div>
+                        <!-- Card body -->
+                        <div class="card-body px-0 pb-0">
+                            <h5 class="mb-0"><a href="{% url "portfolio_details" details.slug %}" class="heading-color stretched-link">{{details.title}}</a></h5>
+                            <small>{{details.service}}</small>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            
+            </div>
+            <!-- Portfolio item END -->
+    
+          
+    
+        </div>	
+    </section>
+   
+    
+   
+    
+    
+</main>
+    <!-- **************** MAIN CONTENT END **************** -->
+    
+    
+    {% include "base/footer_light.html" %}
+    {% endblock body %}
+    
+    
+    

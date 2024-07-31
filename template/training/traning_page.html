@@ -1,0 +1,205 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+
+    <title>NEXEL Training: Empowering the Future Innovators</title>
+    <meta name="description" content="Join Nexel's Training Programs: Web Development, Android App Development, SEO, Digital Marketing, and more. Empower your career with our expert-led training courses in Mangalore, Karnataka.">
+    <meta name="keywords" content="Training Programs, Web Development Training, Android App Development Training, SEO Training, Digital Marketing Training, Engineering Internships, Project-Based Learning, Netlify Deployment, Mangalore Karnataka, India">
+    <meta name="location" content="Mangalore, Karnataka, India">
+    <meta name="author" content="Nexel-Futureize the Innovation">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Nexel: Empowering Future Innovators through Training">
+    <meta property="og:description" content="Join Nexel's Training Programs in Mangalore, Karnataka. Learn Web Development, Android App Development, SEO, Digital Marketing, and more from industry experts.">
+    <meta property="og:image" content="{{ads.image.url}}"> <!-- Add URL to your company logo or relevant image -->
+    <meta property="og:url" content="https://www.nexel.in/career/training/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Twitter-card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nexel - Empowering Future Innovators">
+    <meta name="twitter:description" content="Join Nexel's Training Programs in Mangalore, Karnataka. Learn Web Development, Android App Development, SEO, Digital Marketing, and more from industry experts.">
+    <meta name="twitter:image" content="{{ads.image.url}}">
+
+    <!-- Schema Markup for Local Business -->
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Nexel",
+            "description": "Leading training provider in Mangalore, Karnataka, specializing in web development, Android app development, SEO, digital marketing, and branding.",
+            "url": "https://www.nexel.in/career/training/",
+            "logo": "{% static 'assets/images/favicon.ico' %}",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Mangalore",
+                "addressRegion": "Karnataka",
+                "postalCode": "570001",
+                "addressCountry": "India"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-9778165158",
+                "contactType": "customer service"
+            }
+        }
+    </script>
+
+{% endblock head %}
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+
+<main>
+
+    <section class="pb-5 pb-sm-7">
+        <div class="container">
+            <!-- Title and breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-dots pb-0 mb-0">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">All Training</li>
+                </ol>
+            </nav>
+            <!-- Title -->
+            <h1 class="h3 mb-0 mt-3">Search items</h1>
+        </div>
+    </section>
+
+    <section class="pt-0">
+        <div class="container">
+            <div class="row">
+                <!-- Product grid START -->
+                <div class="col-xl-12 ps-xl-12">
+                    <!-- Search, select and responsive filter button -->
+                    <form class="row g-2 g-xl-4 mb-4">
+                        <!-- Search -->
+                        <div class="col-md-4">
+                            <div class="rounded position-relative">
+                                <input class="form-control bg-light pe-5" type="search" id="productSearch" placeholder="Search products by name or keyword..." aria-label="Search">
+                                <button class="btn bg-transparent border-0 px-2 py-0 position-absolute top-50 end-0 translate-middle-y" type="button" id="searchButton"><i class="bi bi-search"> </i></button>
+                            </div>
+                        </div>
+    
+                        <!-- Select -->
+                        <div class="col-sm-8 col-md-3 ms-auto">
+                            <select class="form-select" id="sortOptions" aria-label="Default select example">
+                                <option value="default" selected="">Sort by</option>
+                                <option value="name">Name</option>
+                                <option value="low_to_high">Low to High Price</option>
+                                <option value="high_to_low">High to Low Price</option>
+                            </select>
+                        </div>
+    
+                        <div class="col-sm-6 col-md-3 d-grid d-xl-none">
+                            <!-- Filter offcanvas button -->
+                            <button class="btn btn-dark mb-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                                <i class="fas fa-sliders-h me-1"></i> Show filter
+                            </button>
+                        </div>
+                    </form>
+    
+                    <!-- No Products Message -->
+                    <div id="noProductsMessage" class="alert alert-warning" style="display: none;">
+                        No products found.
+                    </div>
+    
+                    <!-- Products -->
+                    <div class="row g-4 g-lg-5" id="productGrid">
+                        <!-- Product item -->
+                        {% for product in all_training %}
+                        <div class="col-sm-6 col-lg-4 product-item" data-name="{{ product.title }}" data-price="{{ product.price }}">
+                            <div class="card border bg-transparent overflow-hidden p-0 h-100">
+                                <!-- Overlay -->
+                                <div class="position-absolute start-0 top-0 d-flex align-items-start w-100 z-index-2 p-3">
+                                    <div class="badge text-bg-dark">Featured</div>
+                                </div>
+    
+                                <!-- Image -->
+                                <div class="card-header rounded m-2">
+                                    <img src="{{ product.img.url }}" alt="Nexel - {{ product.title }}">
+                                </div>
+    
+                                <!-- Card body -->
+                                <div class="card-body pb-0">
+                                    <!-- Title -->
+                                    <h6 class="card-title"><a href="{% url 'training_details' product.slug %}" class="stretched-link">{{ product.title }}</a></h6>
+                                    <!-- Badge and price -->
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                        <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                        <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                        <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                        <li class="list-inline-item me-0 small"><i class="fas fa-star-half-alt text-warning"></i></li>
+                                    </ul>
+                                </div>
+    
+                                <!-- Card footer -->
+                                <div class="card-footer bg-transparent d-flex justify-content-between align-items-center pt-0">
+                                    <p class="fw-bold text-success mb-0">Rs. {{ product.price }}/-  ({{ product.mode }})</p>
+                                    <a href="{% url 'training_details' product.slug %}#Applynow" class="btn btn-success mb-0 z-index-2">Apply Now </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div> <!-- Row END -->
+    
+                </div>
+                <!-- Product grid END -->		
+            </div>
+        </div>
+    </section>
+    
+
+  
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#searchButton').on('click', function() {
+            const searchText = $('#productSearch').val().toLowerCase();
+            let noResults = true;
+            $('.product-item').each(function() {
+                const productName = $(this).data('name').toLowerCase();
+                if (productName.includes(searchText)) {
+                    $(this).show();
+                    noResults = false;
+                } else {
+                    $(this).hide();
+                }
+            });
+
+            if (noResults) {
+                $('#noProductsMessage').show();
+            } else {
+                $('#noProductsMessage').hide();
+            }
+        });
+
+        $('#sortOptions').on('change', function() {
+            const sortBy = $(this).val();
+            const productGrid = $('#productGrid');
+            let products = $('.product-item');
+
+            products.sort(function(a, b) {
+                if (sortBy === 'name') {
+                    return $(a).data('name').localeCompare($(b).data('name'));
+                } else if (sortBy === 'low_to_high') {
+                    return $(a).data('price') - $(b).data('price');
+                } else if (sortBy === 'high_to_low') {
+                    return $(b).data('price') - $(a).data('price');
+                }
+                return 0; // Default sort (no change)
+            });
+
+            products.detach().appendTo(productGrid);
+        });
+    });
+</script>
+
+
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

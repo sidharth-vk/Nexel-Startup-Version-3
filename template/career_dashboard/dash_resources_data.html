@@ -1,0 +1,202 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Intern Dashboard</title>
+
+{% endblock head %}
+
+
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+
+<main>
+    <section class="pt-sm-7">
+        <div class="container pt-3 pt-xl-5">
+            <div class="row">
+                {% include "career_dashboard/sidebar.html" %}
+                <!-- Main content -->
+                <div class="col-lg-8 col-xl-9 ps-lg-4 ps-xl-6">
+                    <!-- Title and offcanvas button -->
+                    <div class="d-flex justify-content-between align-items-center  mb-5">
+                        <!-- Title -->
+                        <h1 class="h3 mb-0">Resources</h1>
+    
+                        <!-- Advanced filter responsive toggler START -->
+                        <button class="btn btn-primary d-lg-none flex-shrink-0 ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                            <i class="fas fa-sliders-h"></i> Menu
+                        </button>
+                     <!-- Advanced filter responsive toggler END -->
+                    </div>
+
+                    
+
+
+
+                    <ul class="nav nav-justified nav-pills nav-pills-primary-soft mb-3" id="tour-pills-tab" role="tablist">
+                        <li class="nav-item me-2">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#tab-research">File</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-design">Folder</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-develope">Video</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content">
+
+
+                        <div class="tab-pane show active" id="tab-research">
+                            <!-- Search Input -->
+                            <div class="mb-3">
+                                <input type="text" id="search-input" class="form-control" placeholder="Search resources...">
+                            </div>
+                        
+                            <div id="resources-list">
+                                {% for resources in resources_file %}
+                                <div class="card-body px-0 mt-3 resource-item">
+                                    <div class="border rounded p-4 mb-4">
+                                        <div class="d-sm-flex align-items-center">
+                                            <div class="flex-shrink-0 mb-2 mb-sm-0">
+                                                <img class="avatar" src="{{resources.resources.logo.url}}" alt="Image Description">
+                                            </div>
+                                            <div class="flex-grow-1 ms-sm-3">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm mb-3 mb-sm-0">
+                                                        <p class="heading-color fw-normal mb-0">{{resources.title}}</p>
+                                                        <small class="text-muted">Category : {{resources.resources.title}}</small>
+                                                    </div>
+                                                    <div class="col-sm-auto">
+                                                        <div class="d-flex gap-3">
+                                                            <a type="button" href="{% url "resource_file_data" id resources.id %}" class="btn btn-sm btn-white border mb-0"> <i class="bi-eye me-1"></i> View </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% empty %}
+                                <div style="text-align:center;">
+                                    <p>No data Found</p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+
+
+                        <div class="tab-pane" id="tab-design">
+                            {% for resources in resources_folder %}
+                            <div class="card-body px-0 mt-3">
+                                <div class="border rounded p-4 mb-4">
+                                    <div class="d-sm-flex align-items-center">
+                                        <div class="flex-shrink-0 mb-2 mb-sm-0">
+                                            <img class="avatar" src="{{resources.resources.logo.url}}" alt="Image Description">
+                                        </div>
+
+                                        <div class="flex-grow-1 ms-sm-3">
+                                            <div class="row align-items-center">
+                                                <div class="col-sm mb-3 mb-sm-0">
+                                                    <p class="heading-color fw-normal mb-0">{{resources.title}}</p>
+                                                    <small class="text-muted">Category : {{resources.resources.title}} </small>
+                                                </div>
+                                                <!-- End Col -->
+
+                                                <div class="col-sm-auto">
+                                                    <div class="d-flex gap-3">
+                                                        <a type="button" href="{{resources.data}}" class="btn btn-sm btn-white border mb-0"> <i class="bi-eye me-1"></i> View </a>
+                                                    </div>
+                                                </div>
+                                                <!-- End Col -->
+                                            </div>
+                                            <!-- End Row -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% empty %}
+                            <div style="text-align:center;">
+                                <p>No data Found</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+
+                        <div class="tab-pane" id="tab-develope">
+                            {% for resources in resources_video %}
+                            <div class="card-body px-0 mt-3">
+                                <div class="border rounded p-4 mb-4">
+                                    <div class="d-sm-flex align-items-center">
+                                        <div class="flex-shrink-0 mb-2 mb-sm-0">
+                                            <img class="avatar" src="{{resources.resources.logo.url}}" alt="Image Description">
+                                        </div>
+
+                                        <div class="flex-grow-1 ms-sm-3">
+                                            <div class="row align-items-center">
+                                                <div class="col-sm mb-3 mb-sm-0">
+                                                    <p class="heading-color fw-normal mb-0">{{resources.title}}</p>
+                                                    <small class="text-muted">Category : {{resources.resources.title}} </small>
+                                                </div>
+                                                <!-- End Col -->
+
+                                                <div class="col-sm-auto">
+                                                    <div class="d-flex gap-3">
+                                                        <a type="button" href="{{resources.data}}" class="btn btn-sm btn-white border mb-0"> <i class="bi-eye me-1"></i> View </a>
+                                                    </div>
+                                                </div>
+                                                <!-- End Col -->
+                                            </div>
+                                            <!-- End Row -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% empty %}
+                            <div style="text-align:center;">
+                                <p>No data Found</p>
+                            </div>
+                            {% endfor %}
+                            
+                        </div>
+
+
+                    </div>
+    
+
+
+
+                    
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#search-input').on('keyup', function() {
+            var searchValue = $(this).val().toLowerCase();
+            $('.resource-item').each(function() {
+                var title = $(this).find('.heading-color').text().toLowerCase();
+                var category = $(this).find('small').text().toLowerCase();
+
+                if (title.indexOf(searchValue) > -1 || category.indexOf(searchValue) > -1) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

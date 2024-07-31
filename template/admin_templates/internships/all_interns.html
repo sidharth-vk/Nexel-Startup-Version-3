@@ -1,0 +1,86 @@
+{% extends "admin_templates/base/base.html" %} {% load static %} {% block body %}
+
+<!-- [ Header ] end --><!-- [ Main Content ] start -->
+<div class="pc-container">
+    <div class="pc-content">
+        <div class="row">
+
+           
+ 
+
+
+
+
+            <!-- [ basic-table ] start -->
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <h5 class="mb-3 mb-sm-0">All Intern list</h5>
+                            
+                        </div>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive" id="pc-dt-filter">
+                            <table class="table" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center">Name</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Internship For</th>
+                                        <th class="text-center">Progress</th>
+                                        <th class="text-center">Registration Date</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for all_leads in all_leads %}
+
+                                    
+                                    
+                                    <tr>
+                                        <td class="text-center">{{all_leads.assigned_id}}</td>
+                                        <td class="text-center">{{all_leads.offer_letter.name}}</td>
+                                        <td class="text-center">{{all_leads.offer_letter.email}}</td>
+                                        <td class="text-center">{{all_leads.internship.title}}</td>
+                                        {% if all_leads.completed %}
+                                        <td class="text-center">Completed</td>
+                                        {% else %}
+                                        <td class="text-center">In Progress</td>
+                                        {% endif %}
+                                        
+                                        <td class="text-center">{{all_leads.start_date}}</td>
+                                        
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<!-- [Page Specific JS] start -->
+<script src="{% static 'admin_assets/assets/js/plugins/simple-datatables.js' %}"></script>
+<script>
+    const dataTable = new simpleDatatables.DataTable("#dataTable", {
+        perPage: 10, // Number of items per page
+        perPageSelect: [5, 10, 15, 20,50,100], 
+        filters: {
+            Job: ["Assistant", "Manager"],
+        },
+        pagination: true 
+    });
+</script>
+
+
+
+{% endblock body %}
+</div>
+</div>

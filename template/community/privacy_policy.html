@@ -1,0 +1,43 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+
+	<title>Nexel - Terms and Condition</title>
+    <meta name="description" content="Nexel - Terms and Conditions">
+    <meta name="keywords" content="Software Development, Web Development, Android App Development, SEO Services, Digital Marketing, Branding Solutions, Mangalore Karnataka, India">
+    <meta name="location" content="Mangalore, Karnataka, India">
+    <meta name="author" content="Nexel-Futureize the Innovation">
+
+{% endblock head %}
+
+
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+
+<main>
+
+    
+    <section class="pt-lg-8 pt-xl-9">
+        <div class="container pt-4 pt-lg-0">
+            <div class="row">
+                <div class="col-xl-8 mx-auto">
+                    <!-- Main title -->
+                    <div class="text-center mb-6">
+                        <h1>Privacy &amp; Policy</h1>
+                        <p class="lead mb-0">Last update on July 2024</p>
+                    </div>
+    
+                    {{data.data|safe}}
+
+                </div>
+            </div> <!-- Row END -->
+        </div>	
+    </section>
+  
+</main>
+
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

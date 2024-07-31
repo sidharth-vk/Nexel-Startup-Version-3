@@ -1,0 +1,144 @@
+{% extends "admin_templates/base/base.html" %}
+{% block body %}
+
+<!-- [ Header ] end --><!-- [ Main Content ] start -->
+<div class="pc-container">
+  <div class="pc-content">
+    <!-- [ Main Content ] start -->
+    <div class="row">
+      <div class="col-xxl-3 col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 me-3">
+                <p class="mb-1 fw-medium text-muted">Total Internship</p>
+                <h4 class="mb-1">{{total_internship}}</h4>
+              </div>
+              <div class="flex-shrink-0">
+                <div class="avtar avtar-l bg-light-primary rounded-circle"><i class="fas fa-user f-28"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-3 col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 me-3">
+                <p class="mb-1 fw-medium text-muted">Total Registration</p>
+                <h4 class="mb-1">{{total_application}}</h4>
+              </div>
+              <div class="flex-shrink-0">
+                <div class="avtar avtar-l bg-light-success rounded-circle"><i class="fas fa-graduation-cap f-28"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-3 col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 me-3">
+                <p class="mb-1 fw-medium text-muted">Total Intern</p>
+                <h4 class="mb-1">{{total_interns}}</h4>
+              </div>
+              <div class="flex-shrink-0">
+                <div class="avtar avtar-l bg-light-warning rounded-circle"><i class="fas fa-file-alt f-28"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-3 col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 me-3">
+                <p class="mb-1 fw-medium text-muted">Total Report</p>
+                <h4 class="mb-1">{{total_report}}</h4>
+              </div>
+              <div class="flex-shrink-0">
+                <div class="avtar avtar-l bg-light-danger rounded-circle"><i class="fas fa-clipboard-list f-28"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-3 col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 me-3">
+                <p class="mb-1 fw-medium text-muted">Internship Revenue</p>
+                <h4 class="mb-1">Rs {{total_revenue}}</h4>
+              </div>
+              <div class="flex-shrink-0">
+                <div class="avtar avtar-l bg-light-primary rounded-circle"><i class="fas fa-university f-28"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-3 col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 me-3">
+                <p class="mb-1 fw-medium text-muted">Total Courses</p>
+                <h4 class="mb-1">{{total_courses}}</h4>
+              </div>
+              <div class="flex-shrink-0">
+                <div class="avtar avtar-l bg-light-success rounded-circle"><i class="fab fa-cc-visa f-28"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-3 col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 me-3">
+                <p class="mb-1 fw-medium text-muted">Admission</p>
+                <h4 class="mb-1">42.6%</h4>
+              </div>
+              <div class="flex-shrink-0">
+                <div class="avtar avtar-l bg-light-warning rounded-circle"><i class="fas fa-chart-bar f-28"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-3 col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 me-3">
+                <p class="mb-1 fw-medium text-muted">Product Enquiry</p>
+                <h4 class="mb-1">42.6%</h4>
+              </div>
+              <div class="flex-shrink-0">
+                <div class="avtar avtar-l bg-light-danger rounded-circle"><i class="fas fa-cash-register f-28"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+    <!-- [ Main Content ] end -->
+  </div>
+</div>
+
+
+{% endblock body %}

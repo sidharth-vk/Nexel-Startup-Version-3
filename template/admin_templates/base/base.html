@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- [Head] start -->
+<!-- Mirrored from ableproadmin.com/dashboard/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Jun 2024 09:15:14 GMT -->
+
+<head>
+  <title>Home | Able Pro Dashboard Template</title>
+  <!-- [Meta] -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description"
+    content="Able Pro is trending dashboard template made using Bootstrap 5 design framework. Able Pro is available in Bootstrap, React, CodeIgniter, Angular,  and .net Technologies." />
+  <meta name="keywords"
+    content="Bootstrap admin template, Dashboard UI Kit, Dashboard Template, Backend Panel, react dashboard, angular dashboard" />
+  <meta name="author" content="Phoenixcoded" />
+  <!-- [Favicon] icon -->
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon" />
+  <!-- [Font] Family -->
+  <link rel="stylesheet" href="{% static "admin_assets/assets/fonts/inter/inter.css" %}" id="main-font-link" />
+  <link rel="stylesheet" href="{% static "admin_assets/assets/css/plugins/style.css" %}">
+  <!-- [Tabler Icons] https://tablericons.com -->
+  <link rel="stylesheet" href="{% static "admin_assets/assets/fonts/tabler-icons.min.css" %}" />
+  <!-- [Feather Icons] https://feathericons.com -->
+  <link rel="stylesheet" href="{% static "admin_assets/assets/fonts/feather.css" %}" />
+  <!-- [Font Awesome Icons] https://fontawsome.com/icons -->
+  <link rel="stylesheet" href="{% static "admin_assets/assets/fonts/fontawesome.css" %}" />
+  <!-- [Material Icons] https://fonts.google.com/icons -->
+  <link rel="stylesheet" href="{% static "admin_assets/assets/fonts/material.css" %}" />
+  <!-- [Template CSS Files] -->
+  <link rel="stylesheet" href="{% static "admin_assets/assets/css/style.css" %}" id="main-style-link" />
+  <link rel="stylesheet" href="{% static "admin_assets/assets/css/style-preset.css" %}" />
+</head><!-- [Head] end --><!-- [Body] Start -->
+
+<body data-pc-preset="preset-1" data-pc-sidebar-caption="true" data-pc-layout="vertical" data-pc-direction="ltr"
+  data-pc-theme_contrast="" data-pc-theme="light">
+  <!-- [ Pre-loader ] start -->
+  <div class="page-loader">
+    <div class="bar"></div>
+  </div>
+  <!-- [ Pre-loader ] End -->
+  {% include "admin_templates/base/nav.html" %}
+  {% include "admin_templates/base/header.html" %}
+  <div class="offcanvas pc-announcement-offcanvas offcanvas-end" tabindex="-1" id="announcement"
+    aria-labelledby="announcementLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="announcementLabel">
+        What's new announcement?
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p class="text-span">Today</p>
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="align-items-center d-flex flex-wrap gap-2 mb-3">
+            <div class="badge bg-light-success f-12">Big News</div>
+            <p class="mb-0 text-muted">2 min ago</p>
+            <span class="badge dot bg-warning"></span>
+          </div>
+          <h5 class="mb-3">Able Pro is Redesigned</h5>
+          <p class="text-muted">
+            Able Pro is completely renowed with high aesthetics User
+            Interface.
+          </p>
+          <img src="../assets/images/layout/img-announcement-1.png" alt="img" class="img-fluid mb-3" />
+          <div class="row">
+            <div class="col-12">
+              <div class="d-grid">
+                <a class="btn btn-outline-secondary" href="https://1.envato.market/zNkqj6" target="_blank">Check Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="align-items-center d-flex flex-wrap gap-2 mb-3">
+            <div class="badge bg-light-warning f-12">Offer</div>
+            <p class="mb-0 text-muted">2 hour ago</p>
+            <span class="badge dot bg-warning"></span>
+          </div>
+          <h5 class="mb-3">Able Pro is in best offer price</h5>
+          <p class="text-muted">
+            Download Able Pro exclusive on themeforest with best price.
+          </p>
+          <a href="https://1.envato.market/zNkqj6" target="_blank"><img
+              src="../assets/images/layout/img-announcement-2.png" alt="img" class="img-fluid" /></a>
+        </div>
+      </div>
+      <p class="text-span mt-4">Yesterday</p>
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="align-items-center d-flex flex-wrap gap-2 mb-3">
+            <div class="badge bg-light-primary f-12">Blog</div>
+            <p class="mb-0 text-muted">12 hour ago</p>
+            <span class="badge dot bg-warning"></span>
+          </div>
+          <h5 class="mb-3">Featured Dashboard Template</h5>
+          <p class="text-muted">
+            Do you know Able Pro is one of the featured dashboard template
+            selected by Themeforest team.?
+          </p>
+          <img src="../assets/images/layout/img-announcement-3.png" alt="img" class="img-fluid" />
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="align-items-center d-flex flex-wrap gap-2 mb-3">
+            <div class="badge bg-light-primary f-12">Announcement</div>
+            <p class="mb-0 text-muted">12 hour ago</p>
+            <span class="badge dot bg-warning"></span>
+          </div>
+          <h5 class="mb-3">Buy Once - Get Free Updated lifetime</h5>
+          <p class="text-muted">
+            Get the lifetime free updates once you purchase the Able Pro.
+          </p>
+          <img src="../assets/images/layout/img-announcement-4.png" alt="img" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </div>
+  {% block body %}
+  {% endblock body %}
+
+
+  <!-- [ Main Content ] end -->
+  <footer class="pc-footer">
+    <div class="footer-wrapper container-fluid">
+      <div class="row">
+        <div class="col my-1">
+          <p class="m-0">
+            CRM Developed By
+            <a href="https://www.nexel.in/" target="_blank">Nexel</a>
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- [Page Specific JS] start -->
+  <script data-cfasync="false" src="{% static "admin_assets/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"%}"></script>
+  <script src="{% static "admin_assets/assets/js/plugins/apexcharts.min.js" %}"></script>
+  <script src="{% static 'admin_assets/assets/js/pages/dashboard-default.js' %}"></script>
+  <!-- [Page Specific JS] end --><!-- Required Js -->
+  <script src="{% static 'admin_assets/assets/js/plugins/popper.min.js' %}"></script>
+  <script src="{% static 'admin_assets/assets/js/plugins/simplebar.min.js' %}"></script>
+  <script src="{% static 'admin_assets/assets/js/plugins/bootstrap.min.js' %}"></script>
+  <script src="{% static 'admin_assets/assets/js/fonts/custom-font.js' %}"></script>
+  <script src="{% static 'admin_assets/assets/js/pcoded.js' %}"></script>
+  <script src="{% static 'admin_assets/assets/js/plugins/feather.min.js' %}"></script>
+  <script>
+    layout_change("false");
+  </script>
+  <script>
+    layout_theme_contrast_change("false");
+  </script>
+  <script>
+    change_box_container("false");
+  </script>
+  <script>
+    layout_caption_change("true");
+  </script>
+  <script>
+    layout_rtl_change("false");
+  </script>
+  <script>
+    preset_change("preset-1");
+  </script>
+  <script>
+    main_layout_change("vertical");
+  </script>
+
+</body>
+
+</html>

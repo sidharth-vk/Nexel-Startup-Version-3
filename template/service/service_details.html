@@ -1,0 +1,279 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+{% for servide_detail in servide_detail %}
+    <title> {{servide_detail.name}} - NEXEL</title>
+    <meta name="description" content="Explore Nexel's Comprehensive Services: {{servide_detail.name}}. Discover our experts who bring your ideas to life with innovative solutions.">
+    <meta name="keywords" content="Software Development, Web Development, Android App Development, HRMS, SEO Services, Digital Marketing, Branding Solutions, Professional Dashboard, CRM Development, Appointment Booking System, Mangalore Karnataka, India">
+    <meta name="location" content="Mangalore, Karnataka, India">
+    <meta name="author" content="Nexel-Futureize the Innovation">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Nexel: Innovative Software Development Company">
+    <meta property="og:description" content="Leading software development company in Mangalore, Karnataka, offering web development, Android apps, SEO, digital marketing, and branding solutions.">
+    <meta property="og:image" content="{{ads.image.url}}"> 
+    <meta property="og:url" content="https://www.nexel.in/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Twitter-card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nexel - Futureize the innovation">
+    <meta name="twitter:description" content="Leading software development company in Mangalore, Karnataka, offering web development, Android apps, SEO, digital marketing, and branding solutions.">
+    <meta name="twitter:image" content="{{ads.image.url}}">
+
+    <!-- Schema Markup for Local Business -->
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Nexel",
+            "description": "Leading software development company in Mangalore, Karnataka, specializing in web development, Android app development, SEO, digital marketing, and branding.",
+            "url": "https://www.nexel.in/",
+            "logo": "{% static 'assets/images/favicon.ico' %}",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Mangalore",
+                "addressRegion": "Karnataka",
+                "postalCode": "570001",
+                "addressCountry": "India"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-9778165158",
+                "contactType": "customer service"
+            }
+        }
+    </script>
+{% endfor %}
+{% endblock head %}
+{% block body %}
+{% include "base/navbar_dark.html" %}
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+    {% for servide_detail in servide_detail %}
+    <!-- =======================
+    Main hero START -->
+    <section class="bg-dark pt-lg-8 pt-xl-9 " style="background-image:url(assets/images/elements/bg-pattern-2.png); background-position: center left; background-size: cover;" data-bs-theme="dark">
+        <div class="container position-relative pt-4 pt-lg-0">
+            <div class="row align-items-center">
+                <!-- Title -->
+                <div class="col-md-7 col-xl-6">
+                    <h1 class="mb-4">{{servide_detail.name}}</h1>
+                    <p class="mb-4">{{servide_detail.des}}</p>
+                </div>
+                
+                <div class="col-md-4 ms-auto text-md-end">
+                    <a href="{% url "start_business" %}" class="btn btn-lg btn-primary mb-6 mb-md-0">Start your project</a>
+                </div>
+            </div>
+        </div>	
+    </section>
+    <!-- =======================
+    Main hero END -->
+    {% endfor %}
+    <br>
+    <br>
+    <br>
+
+        <!-- =======================
+    Approach and Benefits START -->
+    <section class="pt-0 mt-5">
+        <div class="container">
+            <div class="row g-4 g-lg-7">
+                <!-- Our Approach -->
+                <div class="col-md-6">
+                    {% for servide_detail in servide_detail %}
+                    <h4 class="mb-4">Our Approach</h4>
+                    {{servide_detail.approach|safe}}
+                    {% endfor %}
+                </div>
+    
+                <!-- Service benefits -->
+                <div class="col-md-6">
+                    <div class="card card-body bg-light border p-md-5">
+                        <h4 class="mb-3">Service benefits</h4>
+    
+                        <!-- List -->
+                        <ul class="list-group list-group-borderless border-0">
+                            {% for service_benefit in service_benefit %}
+                            <li class="list-group-item heading-color d-flex mb-0"><i class="bi bi-patch-check text-primary me-2"></i>{{service_benefit.benifits}}</li>
+                            {% endfor %}
+                        </ul>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- =======================
+    Approach and Benefits END -->
+
+        <!-- =======================
+    How it works START -->
+    <section class="pt-0">
+        <div class="container">
+            <div class="inner-container-small text-center mb-4 mb-md-6">
+                <h2 class="mb-0">How its work?</h2>
+            </div>
+    
+            <div class="row g-4 g-lg-7">
+
+                {% for service_works in service_works %}
+                <div class="col-sm-6 col-md-3">
+                    <div class="d-flex justify-content-center align-items-center text-center flex-column bg-transparent">
+                        <div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-3 fw-bold flex-shrink-0 mb-3">{{service_works.slno}}</div>
+                        <h6>{{service_works.work}}</h6>
+                        <p class="small mb-0">{{service_works.des}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+    
+                
+            </div>
+        </div>
+    </section>
+    <!-- =======================
+    How it works END -->
+    
+    
+
+    <section class="pb-0 mb-5" style="padding-top: 1rem;">
+        <div class="container">
+            <!-- Title -->
+            <div class="inner-container text-center mb-4 mb-sm-6">
+                <h2 class="mb-0">Our Comprehensive Solution</h2>
+            </div>
+    
+            <!-- Service list START -->
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+                <!-- Service item -->
+                {% for solutions in solutions %}
+                <div class="col">
+                    <div class="card card-hover-shadow border h-100 p-4">
+                        <!-- Card body -->
+                        <div class="card-body p-0">
+                            
+        
+                            <!-- Content -->
+                            <h5 class="mb-3 text-center"><a href="#">{{solutions.work}}</a></h5>
+                            <p style="text-align:justify;">{{solutions.des}}</p>
+                        </div>
+    
+                    </div>
+                </div>
+                {% endfor %}
+    
+                
+                
+            </div>
+            <!-- Service list END -->
+        </div>	
+    </section>
+    <br>
+    <br>
+
+
+
+    
+    <!-- =======================
+    CTA START -->
+    <section class="position-relative z-index-2 pt-0">
+        <div class="container position-relative">
+            <div class="inner-container bg-light border rounded position-relative overflow-hidden p-4">
+                <!-- SVG decoration -->
+                <figure class="position-absolute top-0 start-0 ms-n8">
+                    <svg width="371" height="354" viewBox="0 0 371 354" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="172.5" cy="176.5" rx="131.5" ry="125.5" fill="url(#paint0_linear_195_2)"></ellipse>
+                        <ellipse cx="185.5" cy="177" rx="185.5" ry="177" fill="url(#paint1_linear_195_2)"></ellipse>
+                        <defs>
+                        <linearGradient id="paint0_linear_195_2" x1="172.5" y1="51" x2="172.5" y2="302" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.0569271" stop-color="#D9D9D9" stop-opacity="0.5"></stop>
+                        <stop offset="0.998202" stop-color="#D9D9D9" stop-opacity="0"></stop>
+                        </linearGradient>
+                        <linearGradient id="paint1_linear_195_2" x1="185.5" y1="0" x2="185.5" y2="354" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.0569271" stop-color="#D9D9D9" stop-opacity="0.2"></stop>
+                        <stop offset="0.998202" stop-color="#D9D9D9" stop-opacity="0"></stop>
+                        </linearGradient>
+                        </defs>
+                    </svg>
+                </figure>
+    
+                <div class="row align-items-center g-4 position-relative">
+                    <div class="col-md-7">
+                        <h5 class="mb-0">Supercharge your business with our transparent services</h5>
+                    </div>
+                    
+                    <div class="col-md-5 text-md-end">
+                        <a href="{% url "contact_us" %}" class="btn btn-dark mb-0">Contact us now</a>
+                    </div>
+                </div> <!-- Row END -->
+            </div>
+        </div>
+    </section>
+    <!-- =======================
+    CTA END -->
+
+
+    <section class="pt-0">
+        <div class="container">
+            <!-- Title -->
+            <div class="text-center mb-4 mb-sm-6">
+                <h3 class="mb-0">Related works</h3>
+            </div>
+    
+            <!-- Slider START -->
+            <div class="swiper swiper-initialized swiper-horizontal swiper-backface-hidden" data-swiper-options="{
+                    &quot;loop&quot;: false,
+                    &quot;spaceBetween&quot;: 40,
+                    &quot;pagination&quot;:{
+                        &quot;el&quot;:&quot;.swiper-pagination&quot;,
+                        &quot;clickable&quot;:&quot;true&quot;
+                    },
+                    &quot;breakpoints&quot;: {
+                        &quot;576&quot;: {&quot;slidesPerView&quot;: 1}, 
+                        &quot;768&quot;: {&quot;slidesPerView&quot;: 2},
+                        &quot;1200&quot;: {&quot;slidesPerView&quot;: 3}
+                    }}">
+    
+                <div class="swiper-wrapper" id="swiper-wrapper-af258748a95cd2a9" aria-live="off" style="transition-duration: 0ms; transition-delay: 0ms; transform: translate3d(0px, 0px, 0px);">
+                    <!-- Slider item -->
+                     {% for portfolio in portfolio %}
+                    <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 3" style="width: 396.667px; margin-right: 40px;">
+                        <div class="card card-img-scale bg-transparent overflow-hidden">
+                            <!-- Logo -->
+                            <div class="position-absolute top-0 start-0 z-index-1">
+                                <img src="{% static "assets/image/banner/logo/nexel_dark.png" %}" class="h-20px m-4" alt="Client-img">
+                            </div>
+        
+                            <div class="card-img-scale-wrapper rounded-3">
+                                <!-- Card Image -->              
+                                <img src="{{portfolio.bannerimg.url}}" class="img-scale" alt="portfolio-img">
+                            </div>
+                            <!-- Card body -->
+                            <div class="card-body px-0 pb-0">
+                                <h5 class="mb-0"><a href="{% url "portfolio_details" portfolio.slug %}" class="heading-color stretched-link">{{portfolio.title}}</a></h5>
+                                <small>{{portfolio.service}}</small>
+                            </div>
+                        </div>
+                    </div>
+    
+                    {% endfor %}
+                </div>
+    
+                <!-- Slider Pagination -->
+                <div class="swiper-pagination swiper-pagination-primary position-relative mt-4 swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal swiper-pagination-lock"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+            <!-- Slider END -->
+        </div>	
+    </section>
+    
+    </main>
+    <!-- **************** MAIN CONTENT END **************** -->
+
+
+    {% include "base/footer_light.html" %}
+    {% endblock body %}
+    
+    
+    

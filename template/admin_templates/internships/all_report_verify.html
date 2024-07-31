@@ -1,0 +1,81 @@
+{% extends "admin_templates/base/base.html" %} {% load static %} {% block body %}
+
+<!-- [ Header ] end --><!-- [ Main Content ] start -->
+<div class="pc-container">
+    <div class="pc-content">
+        <div class="row">
+
+           
+ 
+
+
+
+
+            <!-- [ basic-table ] start -->
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <h5 class="mb-3 mb-sm-0">All Report list</h5>
+                            
+                        </div>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive" id="pc-dt-filter">
+                            <table class="table" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center">Name</th>
+                                        <th class="text-center">Week No</th>
+                                        <th class="text-center">Submission Date</th>
+                                        <th class="text-center">Internship F0r</th>
+                                        <th class="text-center">Action</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for all_leads in all_leads %}
+
+                                    
+                                    
+                                    <tr>
+                                        <td class="text-center">{{all_leads.internship_assigned.assigned_id}}</td>
+                                        <td class="text-center">{{all_leads.internship_assigned.offer_letter.name}}</td>
+                                        <td class="text-center">Week {{all_leads.week_number}}</td>
+                                        <td class="text-center">{{all_leads.submission_date}}</td>
+                                        <td class="text-center">{{all_leads.internship_assigned.offer_letter.internship_for}}</td>
+                                        <td class="text-center"><a href="{% url "complete_report" all_leads.id %}" class="avtar avtar-s btn-link-success border border-success dropdown-toggle arrow-none" data-bs-toggle="Complete" ><i class="ti ti-check f-18"></i></a> <a href="#" class="avtar avtar-s btn-link-secondary border border-secondary dropdown-toggle arrow-none" data-bs-toggle="View Report" ><i class="ti ti-eye f-18"></i></a></td>
+                                        
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<!-- [Page Specific JS] start -->
+<script src="{% static 'admin_assets/assets/js/plugins/simple-datatables.js' %}"></script>
+<script>
+    const dataTable = new simpleDatatables.DataTable("#dataTable", {
+        perPage: 10, // Number of items per page
+        perPageSelect: [5, 10, 15, 20,50,100], 
+        filters: {
+            Job: ["Assistant", "Manager"],
+        },
+        pagination: true 
+    });
+</script>
+
+
+
+{% endblock body %}
+</div>
+</div>

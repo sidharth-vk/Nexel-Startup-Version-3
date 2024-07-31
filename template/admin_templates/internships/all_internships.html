@@ -1,0 +1,133 @@
+{% extends "admin_templates/base/base.html" %} {% load static %} {% block body %}
+
+<!-- [ Header ] end --><!-- [ Main Content ] start -->
+<div class="pc-container">
+    <div class="pc-content">
+        <div class="row">
+
+
+
+            <div class="col-12">
+                <div class="card table-card">
+                    <div class="card-header d-flex align-items-center justify-content-between py-3">
+                        <h5 class="mb-0">All Interships</h5><a href="{% url "add_internship" %}" class="btn btn-sm btn-link-primary">Add Data</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="pc-dt-simple">
+                                <thead>
+                                    <tr>
+                                        <th>Internship Title</th>
+                                        <th>Duration</th>
+                                        <th>Method</th>
+                                        <th>Status</th>
+                                        <th>Last Updated</th>
+                                        <th class="text-end">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for allinternship in allinternship %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-shrink-0"><img src="{{allinternship.img.url}}"
+                                                        alt="user image" class="img-radius wid-40"></div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h6 class="mb-0">{{allinternship.title}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{{allinternship.duration}}</td>
+                                        <td>{{allinternship.stipend}}</td>
+                                        <td><span class="badge text-bg-success">Completed</span></td>
+                                        <td>{{allinternship.last_modified.date}}<span class="text-muted text-sm d-block">{{allinternship.last_modified.time}}</span></td>
+                                        <td class="text-end"><a href="{% url "career_internship_details" allinternship.slug %}" class="avtar avtar-xs btn-link-secondary"><i
+                                                    class="ti ti-eye f-20"></i> </a><a href="{% url 'edit_internship' allinternship.id %}"
+                                                class="avtar avtar-xs btn-link-secondary"><i
+                                                    class="ti ti-edit f-20"></i> </a> <form action="{% url 'delete_internship' allinternship.id %}" method="post" style="display:inline;" onsubmit="return confirmDelete();">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="avtar avtar-xs btn-link-secondary" style="border:none; background:none; padding:0;">
+                                                            <i class="ti ti-trash f-20"></i>
+                                                        </button>
+                                                    </form></td>
+                                    </tr>
+                                    {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<!-- [Page Specific JS] start -->
+<script src="{% static 'admin_assets/assets/js/plugins/simple-datatables.js' %}"></script>
+<script>
+    const dataTable = new simpleDatatables.DataTable("#dataTable", {
+        perPage: 10, // Number of items per page
+        perPageSelect: [5, 10, 15, 20, 50, 100],
+        filters: {
+            Job: ["Assistant", "Manager"],
+        },
+        pagination: true
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.btn-success').click(function () {
+            const button = $(this);
+            const row = button.closest('tr');
+            const id = row.find('td').eq(0).text();
+            const name = row.find('td').eq(1).text();
+            const email = row.find('td').eq(2).text();
+            const phone = row.find('td').eq(3).text();
+            const internship_for = row.find('td').eq(4).text();
+            const college_name = row.find('td').eq(5).text();
+            const submitted_at = row.find('td').eq(6).text();
+
+            button.prop('disabled', true); // Disable the button
+
+            $.ajax({
+                url: '/admin/convert-to-intern/',
+                type: 'POST',
+                data: {
+                    'id': id,
+                    'name': name,
+                    'email': email,
+                    'phone': phone,
+                    'internship_for': internship_for,
+                    'college_name': college_name,
+                    'submitted_at': submitted_at,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function (response) {
+                    alert('Application converted to internship assigned successfully!');
+                    location.reload()
+                },
+                error: function (response) {
+                    alert('Error in converting application to internship assigned.');
+                    button.prop('disabled', false); // Re-enable the button on error
+                }
+            });
+        });
+    });
+</script>
+<script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this internship?");
+    }
+</script>
+
+
+
+{% endblock body %}
+</div>
+</div>

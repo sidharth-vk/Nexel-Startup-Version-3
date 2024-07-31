@@ -1,0 +1,159 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Intern Dashboard</title>
+
+{% endblock head %}
+
+
+
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+
+<main>
+    
+
+    <section class="pt-sm-7">
+        <div class="container pt-3 pt-xl-5">
+            <div class="row">
+                
+                {% include "career_dashboard/sidebar.html" %}
+                <!-- Main content -->
+                <div class="col-lg-8 col-xl-9 ps-lg-4 ps-xl-6">
+                    <!-- Advanced filter responsive toggler START -->
+                   
+                    
+                    <div class="card bg-transparent rounded-3">
+                        <!-- Card header -->
+                        <div class="d-flex justify-content-between align-items-center mb-0 mb-sm-2">
+                            <!-- Title -->
+                            <h1 class="h3 mb-0">Ongoing Internship</h1>
+        
+                            <!-- Advanced filter responsive toggler START -->
+                            <button class="btn btn-primary d-lg-none flex-shrink-0 ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                                <i class="fas fa-sliders-h"></i> Menu
+                            </button>
+                         <!-- Advanced filter responsive toggler END -->
+                        </div>
+                        
+                        <!-- Card body START -->
+                        <div class="card-body px-0 mt-3">
+                            <!-- Master card -->
+
+                            {% for assigned_internship in assigned_internship %}
+
+                            <div class="border rounded p-4 mb-4">
+                                <div class="d-sm-flex align-items-center">
+                                    <div class="flex-shrink-0 mb-2 mb-sm-0">
+                                        <img class="avatar" src="{{assigned_internship.internship.img.url}}" alt="Image Description">
+                                    </div>
+    
+                                    <div class="flex-grow-1 ms-sm-3">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm mb-3 mb-sm-0">
+                                                <p class="heading-color fw-normal mb-0">{{assigned_internship.internship.title}}</p>
+                                                <small class="text-muted">Start Date - {{assigned_internship.start_date}}</small>
+                                            </div>
+                                            <!-- End Col -->
+    
+                                            <div class="col-sm-auto">
+                                                <div class="d-flex gap-3">
+                                                    <a type="button" href="{% url "dash_all_internship_details" assigned_internship.internship.slug %}" class="btn btn-sm btn-white border mb-0"> <i class="bi-bookmark-plus me-1"></i> Submit Project </a>
+                                                </div>
+                                            </div>
+                                            <!-- End Col -->
+                                        </div>
+                                        <!-- End Row -->
+                                    </div>
+                                </div>
+                            </div>
+                            {% empty %}
+                            <div class="border rounded p-4 mb-4">
+                                <div class="d-sm-flex align-items-center">
+                                    No Ongoing Internship Available
+                                </div>
+                            </div>
+
+                            
+                            {% endfor %}
+                            
+                        </div>
+                        <!-- Card body END -->
+
+
+                        
+                        <div class="card bg-transparent rounded-3">
+                            <!-- Card header -->
+                            <div class="card-header bg-transparent border-bottom px-0 pt-0">
+                                <h5 class="card-header-title mb-0">Completed Internships</h5>
+                            </div>
+                            <!-- Card body -->
+                            <div class="card-body px-0 mt-3">
+                                
+                                <!-- Table -->
+                                 
+                                <div class="table-responsive border-0">
+                                    <table class="table align-middle p-4 mb-0 table-hover">
+                                        <!-- Table head -->
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col" class="border-0 text-white rounded-start">Reference</th>
+                                                <th scope="col" class="border-0 text-white">Internship</th>
+                                                <th scope="col" class="border-0 text-white">Date of Issue</th>
+                                                <th scope="col" class="border-0 text-white rounded-end">Action</th>
+                                            </tr>
+                                        </thead>
+                
+                                        <!-- Table body START -->
+                                        <tbody>
+                                            {% for certificate in certificate %}
+                                            <!-- Table row -->
+                                            <tr>
+                                                <!-- Table data -->
+                                                <td> <a href="{% url "dash_all_internship_details" certificate.internship_for.slug %}">{{certificate.certificate_id}} </a> </td>
+                
+                                                <!-- Table data -->
+                                                <td>{{certificate.internship_for.title}}</td>
+                
+                                                <!-- Table data -->
+                                                <td>{{certificate.date_of_issue}}</td>
+                
+                                                <!-- Table data -->
+                                                <td>
+                                                    <a href="/{{ certificate.certificate_image }}" download class="btn btn-light border btn-round me-1 mb-1 mb-md-0">
+                                                        <i class="bi bi-download"></i>
+                                                    </a>
+                                                
+                                                </td>
+                                            </tr>
+                                            {% empty %}
+                                            <tr>
+                                                <td colspan="4" class="text-center">No data</td>
+                                            </tr>
+                                            {% endfor %}
+        
+                
+                                        </tbody>
+                                        <!-- Table body END -->
+                                    </table>
+                                </div>
+        
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+
+</main>
+
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

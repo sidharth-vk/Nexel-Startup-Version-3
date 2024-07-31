@@ -1,0 +1,69 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Intern Dashboard</title>
+
+{% endblock head %}
+
+
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+
+<main>
+    <section class="pt-sm-7">
+        <div class="container pt-3 pt-xl-5">
+            <div class="row">
+                {% include "career_dashboard/sidebar.html" %}
+                <!-- Main content -->
+                <div class="col-lg-8 col-xl-9 ps-lg-4 ps-xl-6">
+                    <!-- Title and offcanvas button -->
+                    <div class="d-flex justify-content-between align-items-center  ">
+                        <!-- Title -->
+                        <h1 class="h3 mb-0">Resources</h1>
+    
+                        <!-- Advanced filter responsive toggler START -->
+                        <button class="btn btn-primary d-lg-none flex-shrink-0 ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                            <i class="fas fa-sliders-h"></i> Menu
+                        </button>
+                     <!-- Advanced filter responsive toggler END -->
+                    </div>
+    
+                    <div class="card-body px-0 mt-0">
+                        <!-- Master card -->
+
+                        
+                        <div class="row g-4 g-sm-5 mt-m-5 g-xl-7 mt-0">
+
+                            <!-- Item -->
+                             {% for resources in resources %}
+                            <div class="col-6 col-md-2 col-lg-2">
+                                <a href="{% url "dash_resources_data" resources.id %}" class="card bg-transparent h-100 p-0">
+                                    <img src="{{resources.logo.url}}" class="card-img" alt="Blog-img">
+                                    <p class="m-2" style="text-align:center">{{resources.title}}</p>
+                                </a>
+                            </div>
+                            {% endfor %}
+                
+                           
+                
+                            
+                      </div>
+
+                        
+                        
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

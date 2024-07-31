@@ -1,0 +1,307 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+
+    <title>NEXEL Training Details: {{trainingdata.title}}</title>
+    <meta name="description" content="Detailed Information on Nexel's {{trainingdata.title}} Training Programs: Web Development, Android App Development, SEO, Digital Marketing, and more. Explore course structure, duration, and benefits.">
+    <meta name="keywords" content="Training Program Details, Web Development Course,{{trainingdata.title}}, Android App Development Course, SEO Course, Digital Marketing Course, Engineering Internships, Project-Based Learning, Netlify Deployment, Mangalore Karnataka, India">
+    <meta name="location" content="Mangalore, Karnataka, India">
+    <meta name="author" content="Nexel-Futureize the Innovation">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Nexel: {{trainingdata.title}}">
+    <meta property="og:description" content="{{trainingdata.title}} - Get detailed information on Nexel's Training Programs in Mangalore, Karnataka. Learn about course structure, duration, and benefits.">
+    <meta property="og:image" content="{{trainingdata.banner.url}}"> <!-- Add URL to your company logo or relevant image -->
+    <meta property="og:url" content="https://www.nexel.in/career/training/{{trainingdata.slug}}">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Twitter-card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nexel - {{trainingdata.title}}">
+    <meta name="twitter:description" content="{{trainingdata.title}} - Get detailed information on Nexel's Training Programs in Mangalore, Karnataka. Learn about course structure, duration, and benefits.">
+    <meta name="twitter:image" content="{{trainingdata.banner.url}}">
+
+    <!-- Schema Markup for Local Business -->
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Nexel",
+            "description": "Leading training provider in Mangalore, Karnataka, specializing in web development, Android app development, SEO, digital marketing, and branding.",
+            "url": 'https://www.nexel.in/career/training',
+            "logo": "{% static 'assets/images/favicon.ico' %}",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Mangalore",
+                "addressRegion": "Karnataka",
+                "postalCode": "570001",
+                "addressCountry": "India"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-9778165158",
+                "contactType": "customer service"
+            }
+        }
+    </script>
+
+{% endblock head %}
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+
+<main>
+
+    <section class="pt-xl-8 pb-0 position-relative">
+        <!-- background pattern -->
+        <div class="position-absolute top-0 start-50 translate-middle-x mt-8">
+            <img src="{% static "assets/images/elements/bg-pattern-5.png" %}" alt="">
+        </div>
+    
+        <div class="container pt-5 position-relative">
+            <!-- Title and contents -->
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <!-- Pre info -->
+                    <span class="heading-color fw-semibold">Trusted by happy Students</span>
+                    <ul class="avatar-group mb-0 align-items-center justify-content-center mt-2">
+                        <li class="avatar avatar-xs">
+                            <img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt="avatar">
+                        </li>
+                        <li class="avatar avatar-xs">
+                            <img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt="avatar">
+                        </li>
+                        <li class="avatar avatar-xs">
+                            <img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="avatar">
+                        </li>
+                        <li class="avatar avatar-xs">
+                            <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="avatar">
+                        </li>
+                        <li class="avatar avatar-xs">
+                            <img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt="avatar">
+                        </li>
+                    </ul>
+    
+                    <!-- Title -->
+                    <h1 class="my-4">Nexel's <span class="text-primary">{{trainingdata.title}}</span> Training</h1>
+                    <p class="">{{trainingdata.des|safe}}</p>
+    
+                    <!-- Button -->
+                    <div class="d-flex gap-1 gap-sm-3 flex-wrap justify-content-center">
+                        <a class="btn btn-lg btn-primary" href="#Applynow"><i class="bi bi-telephone-fill me-2"></i>Apply Now</a>
+                        <a href="#learn_more" class="btn btn-lg btn-light border" type="button">Learn More</a>
+                    </div>
+                </div>
+                <!-- Image -->
+                <div class="col-12 mt-6 mt-xl-8 rounded">
+                    <img src="{{trainingdata.banner.url}}" class="rounded" alt="">
+                </div>
+    
+            </div>
+            
+            <!-- Card and images -->
+            <div class="row g-4 justify-content-between align-items-center mt-5 mt-md-7 pt-2 d-none">
+                <!-- Image -->
+                <div class="col-md-6 col-lg-3 order-2">
+                    <img src="assets/images/about/19.jpg" class="rounded" alt="">
+                </div>
+    
+                <!-- Finance card -->
+                <div class="col-md-6 col-lg-5 order-1 order-md-2">
+                    <div class="card card-body bg-dark overflow-hidden p-4" data-bs-theme="dark">
+                        <!-- Decoration -->
+                        <figure class="position-absolute bottom-0 start-0 mb-n7">
+                            <svg opacity="0.05" width="235" height="201" viewBox="0 0 235 201" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.205078 64.3935C15.4403 56.5767 32.7667 52.1455 51.039 52.1455C112.826 52.1455 182.914 122.233 182.914 184.02C182.914 189.596 182.465 195.123 181.669 200.5H233.812C234.31 195.073 234.559 189.547 234.559 184.02C234.559 82.6509 152.408 0.5 51.039 0.5C33.4139 0.5 16.3365 2.98942 0.205078 7.66953V64.3935Z" fill="#fff"></path>
+                                </svg>
+                        </figure>
+                        <!-- name and img -->
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h6 class="mb-0 text-primary">Mizzle bank</h6>
+                            <img src="assets/images/elements/mastercard.svg" class="w-40px" alt="">
+                        </div>
+                        <!-- Chip image -->
+                        <img src="assets/images/elements/Chip.html" class="w-50px mb-7" alt="">
+    
+                        <!-- Account and Valid date -->
+                        <div class="d-flex justify-content-between mt-3">
+                            <!-- Account number -->
+                            <div>
+                                <span class="text-light small">Account number</span>
+                                <h4 class="mb-0">**** **** **** 7899</h4>
+                            </div>
+    
+                            <!-- Account number -->
+                            <div class="text-end">
+                                <span class="text-light small">Valid date</span>
+                                <h5 class="mb-0">29/05</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Chart image -->
+                <div class="col-md-6 col-lg-3 d-none d-lg-block order-md-3">
+                    <img src="assets/images/elements/saas-decoration/24.png" class="rounded shadow" alt="">
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <section class="pt-lg-8 pt-0 pt-xl-9 " id="learn_more" style="margin-top:-80px;" >
+        <div class="container pt-0 pt-lg-0">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    {% comment %} <!-- Main title -->
+                    <div class="card card-body bg-dark p-5 mb-6" data-bs-theme="dark">
+                   
+                    </div> {% endcomment %}
+    
+                    <!-- Description -->
+                    {{trainingdata.long_desc|safe}}
+                </div>
+    
+            </div> <!-- Row END -->
+        </div>	
+    </section>
+
+    <section class="pt-0" style="margin-top:-80px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 mx-auto">
+                    <h2>Training Syllabus</h2>
+                    <br>
+                    <!-- Accordion START -->
+                    <div class="accordion accordion-icon accordion-border" id="accordionFaq">
+                        <!-- Item -->
+                         {% for modules in modules %}
+                        <div class="accordion-item mb-3">
+                            <div class="accordion-header font-base" id="heading-{{modules.id}}">
+                                <button class="accordion-button fw-semibold rounded collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{modules.id}}" aria-expanded="true" aria-controls="collapse-{{modules.id}}">
+                                   Module {{modules.module}}. {{modules.title}}
+                                </button>
+                            </div>
+                            <!-- Body -->
+                            <div id="collapse-{{modules.id}}" class="accordion-collapse collapse " aria-labelledby="heading-{{modules.id}}" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body mt-3 pb-0">
+                                    {{modules.desc}}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                    </div>
+                    <!-- Accordion END -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin-top:-100px;"  id="Applynow">
+        <div class="container">
+            <!-- Title -->
+            <div class="inner-container-small text-center mb-4 mb-md-6">
+                <h3>Admission Process in <span class="text-primary">3</span> easy steps</h3>
+            </div>
+    
+            <div class="row step-process">
+                <!-- Step item -->
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card card-body bg-transparent text-center">
+                        <!-- Icon -->
+                        <div class="icon-lg bg-dark text-white rounded-circle mb-3 mx-auto">
+                            <i class="bi bi-search fa-lg"></i>
+                        </div>
+                        <h5>Check-Out Valuable Courses</h5>
+                        {% comment %} <p>Check-Out Valuable Courses </p> {% endcomment %}
+                    </div>
+                </div>
+    
+                <!-- Step item -->
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card card-body bg-transparent text-center">
+                        <!-- Icon -->
+                        <div class="icon-lg bg-dark text-white rounded-circle mb-3 mx-auto">
+                            <i class="bi bi-bullseye fa-lg"></i>
+                        </div>
+                        <h5>Purchase quickly and securely.</h5>
+                        {% comment %} <p>We define project milestones and deliverables to keep the process on track.</p> {% endcomment %}
+                    </div>
+                </div>
+    
+                <!-- Step item -->
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card card-body bg-transparent text-center">
+                        <!-- Icon -->
+                        <div class="icon-lg bg-dark text-white rounded-circle mb-3 mx-auto">
+                            <i class="bi bi-rocket-takeoff fa-lg"></i>
+                        </div>
+                        <h5>That’s it! Start learning right away.</h5>
+                        {% comment %} <p>We ensure a smooth transition to the live, providing support every step of the way.</p> {% endcomment %}
+                    </div>
+                </div>
+    
+                
+            </div>
+    
+        </div>
+    </section>
+
+
+    <section class="pt-0" style="margin-top:-50px;" id="Applynow">
+        <div class="container">
+            <div class="inner-container-small text-center  ">
+                <h3>Apply Now </h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-xl-8 mx-auto">
+                    
+                 
+                    
+                    <!-- Form -->
+                    <div class="card card-body bg-light border p-sm-5 mt-5" id="contact-form">
+    
+                        <form class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label heading-color">Your name *</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="Full name">
+                            </div>
+    
+                            <div class="col-md-6">
+                                <label class="form-label heading-color">Email address *</label>
+                                <input type="email" class="form-control form-control-lg" id="floatingInput" placeholder="name@example.com">
+                            </div>
+    
+                            <div class="col-md-6">
+                                <label class="form-label heading-color">Phone number *</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="(xxx) xx xxxx">
+                            </div>
+    
+                            <div class="col-md-6">
+                                <label class="form-label heading-color">Applying for (Job position) *</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="job title">
+                            </div>
+    
+                            <div class="col-12">
+                                <label class="form-label heading-color">Message *</label>
+                                <textarea class="form-control" placeholder="Write your message here...." id="floatingTextarea2" style="height: 150px"></textarea>
+                            </div>
+                            <!-- Button -->
+                            <div class="col-12 d-grid">
+                                <button class="btn btn-lg btn-primary mb-0">Send a message</button>
+                            </div>	
+                        </form>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

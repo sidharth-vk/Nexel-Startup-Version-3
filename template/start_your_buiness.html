@@ -1,0 +1,159 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+<main>
+    <section class="pt-8 pt-xl-8">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-9 col-lg-6 text-center mx-auto">
+                    <h2 class="mb-5">Start Your Business</h2>
+                    {% if messages %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {% for message in messages %}
+                        <strong>{{ username }} </strong> {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <br>
+                    <form id="business-form">
+                        {% csrf_token %}
+                        
+                        <!-- Step 1: Business Information -->
+                        <div class="form-step" id="step-1">
+                            <div class="input-floating-label form-floating mb-4">
+                                <input type="text" class="form-control" id="businessName" placeholder="Business Name" required>
+                                <label for="businessName">Business Name</label>
+                            </div>
+                            <div class="input-floating-label form-floating mb-4">
+                                <textarea class="form-control" id="businessDescription" placeholder="Description" required></textarea>
+                                <label for="businessDescription">Description</label>
+                            </div>
+                            <button type="button" class="btn btn-dark" onclick="nextStep(2)">Next</button>
+                        </div>
+                        
+                        <!-- Step 2: Contact Information -->
+                        <div class="form-step d-none" id="step-2">
+                            <div class="input-floating-label form-floating mb-4">
+                                <input type="email" class="form-control" id="contactEmail" placeholder="Email" required>
+                                <label for="contactEmail">Email</label>
+                            </div>
+                            <button type="button" class="btn btn-dark" onclick="nextStep(3)">Next</button>
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(1)">Back</button>
+                        </div>
+                        
+                        <!-- Step 3: Business Goals -->
+                        <div class="form-step d-none" id="step-3">
+                            <div class="input-floating-label form-floating mb-4">
+                                <textarea class="form-control" id="businessGoals" placeholder="Business Goals" required></textarea>
+                                <label for="businessGoals">Business Goals</label>
+                            </div>
+                            <button type="button" class="btn btn-dark" onclick="nextStep(4)">Next</button>
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Back</button>
+                        </div>
+                        
+                        <!-- Step 4: Confirmation -->
+                        <div class="form-step d-none" id="step-4">
+                            <h4>Review Your Information</h4>
+                            <p><strong>Business Name:</strong> <span id="reviewBusinessName"></span></p>
+                            <p><strong>Description:</strong> <span id="reviewBusinessDescription"></span></p>
+                            <p><strong>Email:</strong> <span id="reviewContactEmail"></span></p>
+                            <p><strong>Goals:</strong> <span id="reviewBusinessGoals"></span></p>
+                            <button type="button" class="btn btn-dark" onclick="submitForm()">Submit</button>
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(3)">Back</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+function nextStep(step) {
+    // Validation for the current step
+    if (step === 2 && !validateStep1()) return;
+    if (step === 3 && !validateStep2()) return;
+    if (step === 4 && !validateStep3()) return;
+
+    // Hide all steps and show the next one
+    $('.form-step').addClass('d-none');
+    $('#step-' + step).removeClass('d-none');
+
+    // Populate review step if needed
+    if (step === 4) {
+        $('#reviewBusinessName').text($('#businessName').val());
+        $('#reviewBusinessDescription').text($('#businessDescription').val());
+        $('#reviewContactEmail').text($('#contactEmail').val());
+        $('#reviewBusinessGoals').text($('#businessGoals').val());
+    }
+}
+
+function prevStep(step) {
+    // Hide all steps and show the previous one
+    $('.form-step').addClass('d-none');
+    $('#step-' + step).removeClass('d-none');
+}
+
+function validateStep1() {
+    const businessName = $('#businessName').val().trim();
+    const businessDescription = $('#businessDescription').val().trim();
+    if (!businessName || !businessDescription) {
+        alert('Please fill in all fields in Step 1.');
+        return false;
+    }
+    return true;
+}
+
+function validateStep2() {
+    const contactEmail = $('#contactEmail').val().trim();
+    if (!contactEmail) {
+        alert('Please enter your email in Step 2.');
+        return false;
+    }
+    return true;
+}
+
+function validateStep3() {
+    const businessGoals = $('#businessGoals').val().trim();
+    if (!businessGoals) {
+        alert('Please enter your business goals in Step 3.');
+        return false;
+    }
+    return true;
+}
+
+function submitForm() {
+    const businessData = {
+        business_name: $('#businessName').val(),
+        business_description: $('#businessDescription').val(),
+        contact_email: $('#contactEmail').val(),
+        business_goals: $('#businessGoals').val()
+    };
+
+    $.ajax({
+        url: '{% url "submit_business" %}',  // Adjust this to your URL pattern
+        type: 'POST',
+        data: {
+            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            ...businessData
+        },
+        success: function(response) {
+            window.location.href = '{% url "submission_success" %}';  // Redirect to success page
+        },
+        error: function(xhr, errmsg, err) {
+            alert('An error occurred. Please try again.');
+        }
+    });
+}
+</script>
+
+
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

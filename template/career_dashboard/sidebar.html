@@ -1,0 +1,58 @@
+<!-- Sidebar -->
+                <div class="col-lg-4 col-xl-3">
+                    <!-- Responsive offcanvas body START -->
+                    <div class="offcanvas-lg offcanvas-start h-100" tabindex="-1" id="offcanvasSidebar">
+                        <!-- Offcanvas header -->
+                        <div class="offcanvas-header bg-light">
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">My profile</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasSidebar" aria-label="Close"></button>
+                        </div>
+                        <!-- Offcanvas body -->
+                        <div class="offcanvas-body p-0">
+                            <div class="card border p-3 w-100">
+                                <!-- Card header -->
+                                <div class="card-header text-center border-bottom">
+                                        <!-- Avatar -->
+                                        <div class="avatar avatar-xl position-relative mb-2">
+                                            <img class="avatar-img rounded-circle border border-2 border-white" src="{{profile.profile.url}}" alt="">
+                                            
+                                        </div>
+                                        <h6 class="mb-0">{{profile.user.first_name}} {{profile.user.last_name}}</h6>
+                                        <a href="#" class="text-reset text-primary-hover small">{{profile.user.email}}</a>
+                                </div>
+    
+                                <!-- Card body START -->
+                                <div class="card-body p-0 mt-4">
+                                    <!-- Sidebar menu item START -->
+                                    <ul class="nav nav-pills-primary-border-start flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if "/intern_dash/profile" in request.path %}active{% endif %}" href="{% url "dash_home" %}"><i class="bi bi-person fa-fw me-2"></i>My profile</a>
+                                        </li>
+                                        
+                                        {% comment %} <li class="nav-item">
+                                            <a class="nav-link {% if "/intern_dash/dash_notification" in request.path %}active{% endif %}"   href="{% url "dash_notification" %}"><i class="bi bi-bell fa-fw me-2"></i>Notification</a>
+                                        </li> {% endcomment %}
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if "/intern_dash/all_internship" in request.path %}active{% endif %}" href="{% url "dash_all_internship" %}"><i class="bi bi-briefcase fa-fw me-2"></i>My Internships</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if "/intern_dash/all_course" in request.path %}active{% endif %}" href=""><i class="bi bi-book fa-fw me-2"></i>My Courses</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if "/intern_dash/dash_resources" in request.path %}active{% endif %}" href="{% url "dash_resources" %}"><i class="bi bi-wallet fa-fw me-2"></i>Resources</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if "/intern_dash/support/" in request.path %}active{% endif %}" href="{% url "support_page" %}"><i class="bi bi-person-raised-hand fa-fw me-2"></i>Support</a>
+                                        </li>
+                                        
+                                        <li class="nav-item">
+                                            <a class="nav-link text-danger" href="{% url "logout" %}"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
+                                        </li>
+                                    </ul>
+                                    <!-- Sidebar menu item END -->
+                                </div>
+                                <!-- Card body END -->
+                            </div>
+                        </div>
+                    </div>		
+                </div>

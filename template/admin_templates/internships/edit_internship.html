@@ -1,0 +1,170 @@
+{% extends "admin_templates/base/base.html" %}
+{% load static %}
+{% block body %}
+<div class="pc-container">
+    <div class="pc-content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center justify-content-between py-3">
+                        <h5 class="mb-0">Edit Internship</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="title" name="title" value="{{ internship.title }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="shortdes" class="form-label">Short Description</label>
+                                <input type="text" class="form-control" id="shortdes" name="shortdes" value="{{ internship.shortdes }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="img" class="form-label">Card Image</label>
+                                <input type="file" class="form-control" id="img" name="img">
+                                <img src="{{ internship.img.url }}" alt="current image" class="img-fluid mt-2">
+                            </div>
+                            <div class="mb-3">
+                                <label for="category" class="form-label">Category</label>
+                                <select class="form-control" id="category" name="category" required>
+                                    {% for category in categories %}
+                                    <option value="{{ category.id }}" {% if category.id == internship.category.id %}selected{% endif %}>{{ category.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="edu" class="form-label">Education Required</label>
+                                <input type="text" class="form-control" id="edu" name="edu" value="{{ internship.edu }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="des" class="form-label">Description</label>
+                                <textarea class="form-control" id="des" name="des" required>{{ internship.des }}</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mode" class="form-label">Mode</label>
+                                <input type="text" class="form-control" id="mode" name="mode" value="{{ internship.mode }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="startdate" class="form-label">Start Date</label>
+                                <input type="date" class="form-control" id="startdate" name="startdate" value="{{ internship.startdate }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="duration" class="form-label">Duration</label>
+                                <input type="text" class="form-control" id="duration" name="duration" value="{{ internship.duration }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="no_of_weeks" class="form-label">Number of Weeks</label>
+                                <input type="number" class="form-control" id="no_of_weeks" name="no_of_weeks" value="{{ internship.no_of_weeks }}" required>
+                            </div>
+                            <div id="weeks-container">
+                                <!-- Populate week fields dynamically -->
+                                {% for week in task_weeks %}
+                                <div class="mb-3">
+                                    <label for="week_number_{{ forloop.counter }}" class="form-label">Week {{ week.week_number }} Number</label>
+                                    <input type="text" class="form-control" id="week_number_{{ forloop.counter }}" name="week_number_{{ forloop.counter }}" value="{{ week.week_number }}" readonly>
+                                    <label for="week_link_{{ forloop.counter }}" class="form-label">Week {{ week.week_number }} Link</label>
+                                    <input type="text" class="form-control" id="week_link_{{ forloop.counter }}" name="week_link_{{ forloop.counter }}" value="{{ week.link }}">
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="stipend" class="form-label">Stipend</label>
+                                <input type="text" class="form-control" id="stipend" name="stipend" value="{{ internship.stipend }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="code" class="form-label">Code</label>
+                                <input type="text" class="form-control" id="code" name="code" value="{{ internship.code }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="slug" class="form-label">Slug</label>
+                                <input type="text" class="form-control" id="slug" name="slug" value="{{ internship.slug }}" required>
+                            </div>
+
+                            <h6>Skills</h6>
+                            <div id="skills-container">
+                                {% for skill in skills %}
+                                <div class="mb-3">
+                                    <label for="skill_name_{{ forloop.counter }}" class="form-label">Skill Name</label>
+                                    <input type="text" class="form-control" id="skill_name_{{ forloop.counter }}" name="skill_name" value="{{ skill.name }}">
+                                    <label for="skill_des_{{ forloop.counter }}" class="form-label">Skill Description</label>
+                                    <textarea class="form-control" id="skill_des_{{ forloop.counter }}" name="skill_des">{{ skill.des }}</textarea>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button type="button" id="add-skill" class="btn btn-primary mb-3">Add Skill</button>
+
+                            <h6>Responsibilities</h6>
+                            <div id="responsibilities-container">
+                                {% for responsibility in responsibilities %}
+                                <div class="mb-3">
+                                    <label for="responsibility_name_{{ forloop.counter }}" class="form-label">Responsibility Name</label>
+                                    <input type="text" class="form-control" id="responsibility_name_{{ forloop.counter }}" name="responsibility_name" value="{{ responsibility.name }}">
+                                    <label for="responsibility_des_{{ forloop.counter }}" class="form-label">Responsibility Description</label>
+                                    <textarea class="form-control" id="responsibility_des_{{ forloop.counter }}" name="responsibility_des">{{ responsibility.des }}</textarea>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button type="button" id="add-responsibility" class="btn btn-primary mb-3">Add Responsibility</button>
+
+                            <h6>Experiences</h6>
+                            <div id="experiences-container">
+                                {% for experience in experiences %}
+                                <div class="mb-3">
+                                    <label for="experience_name_{{ forloop.counter }}" class="form-label">Experience Name</label>
+                                    <input type="text" class="form-control" id="experience_name_{{ forloop.counter }}" name="experience_name" value="{{ experience.name }}">
+                                    <label for="experience_des_{{ forloop.counter }}" class="form-label">Experience Description</label>
+                                    <textarea class="form-control" id="experience_des_{{ forloop.counter }}" name="experience_des">{{ experience.des }}</textarea>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button type="button" id="add-experience" class="btn btn-primary mb-3">Add Experience</button>
+                            <br>
+                            <button type="submit" class="btn btn-success">Update Internship</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#add-skill').on('click', function () {
+            const skillTemplate = `
+                <div class="mb-3">
+                    <label for="skill_name" class="form-label">Skill Name</label>
+                    <input type="text" class="form-control" name="skill_name">
+                    <label for="skill_des" class="form-label">Skill Description</label>
+                    <textarea class="form-control" name="skill_des"></textarea>
+                </div>`;
+            $('#skills-container').append(skillTemplate);
+        });
+
+        $('#add-responsibility').on('click', function () {
+            const responsibilityTemplate = `
+                <div class="mb-3">
+                    <label for="responsibility_name" class="form-label">Responsibility Name</label>
+                    <input type="text" class="form-control" name="responsibility_name">
+                    <label for="responsibility_des" class="form-label">Responsibility Description</label>
+                    <textarea class="form-control" name="responsibility_des"></textarea>
+                </div>`;
+            $('#responsibilities-container').append(responsibilityTemplate);
+        });
+
+        $('#add-experience').on('click', function () {
+            const experienceTemplate = `
+                <div class="mb-3">
+                    <label for="experience_name" class="form-label">Experience Name</label>
+                    <input type="text" class="form-control" name="experience_name">
+                    <label for="experience_des" class="form-label">Experience Description</label>
+                    <textarea class="form-control" name="experience_des"></textarea>
+                </div>`;
+            $('#experiences-container').append(experienceTemplate);
+        });
+    });
+</script>
+{% endblock %}

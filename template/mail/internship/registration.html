@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border-radius: 10px 10px 0 0;
+        }
+        .content {
+            padding: 20px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #999999;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 20px 0;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .highlight {
+            color: #007bff;
+            font-weight: bold;
+        }
+        .list-item {
+            margin: 10px 0;
+        }
+        .contact-info {
+            margin: 20px 0;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎉 Welcome to Nexel Internships! 🎉</h1>
+        </div>
+        <div class="content">
+            <p>Dear <span class="highlight">{{ name }}</span>,</p>
+            <p>Thank you for registering for our internship program at Nexel. We are thrilled to have you on board.</p>
+            <p>To complete your registration and receive your offer letter, please follow the payment process by clicking the button below:</p>
+            <p style="text-align: center;">
+                <a href="https://rzp.io/l/nexel-internship" class="button">Complete Payment</a>
+            </p>
+            <p>Here is a summary of your registration details:</p>
+            <ul>
+                <li class="list-item"><strong>Name:</strong> {{ name }}</li>
+                <li class="list-item"><strong>Email:</strong> {{ email }}</li>
+                <li class="list-item"><strong>Internship Program:</strong> {{ internship_for }}</li>
+            </ul>
+            <p>If you have any questions, feel free to reply to this email or contact our support team.</p>
+            <p class="contact-info">
+                <strong>Contact Information:</strong><br>
+                Email: nexel.cd@gmail.com<br>
+                Phone: +91 97781 65158
+            </p>
+            <p>We look forward to working with you!</p>
+            <p>Best regards,</p>
+            <p>The Nexel Team</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Nexel. All rights reserved.</p>
+            <p>Follow us on:
+                <a href="https://www.facebook.com/nexel" target="_blank">Facebook</a> |
+                <a href="https://www.linkedin.com/company/nexel-futureize-the-innovation/" target="_blank">LinkedIn</a> |
+                <a href="https://www.instagram.com/nexel.in/" target="_blank">Instagram</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

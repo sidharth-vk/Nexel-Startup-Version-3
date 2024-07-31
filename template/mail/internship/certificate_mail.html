@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Completion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .content {
+            margin: 20px 0;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #f1f1f1;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Congratulations!</h1>
+        </div>
+        <div class="content">
+            <p>Dear {{user}},</p>
+            <p>We are thrilled to inform you that you have successfully completed your internship at Nexel Futureize the Innovation. Your dedication, hard work, and enthusiasm have greatly contributed to our team.</p>
+            <p>Domain : {{internship_for}}</p>
+            <p>Date of Issue : {{date_of_issue}}</p>
+			<p>We hope this internship has been a valuable experience for you and that you have gained significant skills and knowledge.</p>
+            <p>As a token of our appreciation, please find your internship certificate by clicking the button below:</p>
+            <p><a href="{{url}}" class="button" style="text-color:black;">View Certificate</a></p>
+            <p>We wish you all the best in your future endeavors.</p>
+            <p>Sincerely,<br>Sidharth<br>CEO<br>Nexel</p>
+        </div>
+        <div class="footer">
+            <p>&copy; Nexel Futureize the Innovation. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

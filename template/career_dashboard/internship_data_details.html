@@ -1,0 +1,281 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Intern Dashboard</title>
+
+{% endblock head %}
+
+
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+
+
+<main>
+
+
+
+
+    <section class="pt-sm-7">
+        <div class="container pt-3 pt-xl-5">
+            <div class="row">
+                
+                {% include "career_dashboard/sidebar.html" %}
+                <!-- Main content -->
+                <div class="col-lg-8 col-xl-9 ps-lg-4 ps-xl-6">
+
+                   
+
+                    <div class="d-flex justify-content-between align-items-center mb-5 mb-sm-6">
+                        <!-- Title -->
+                        <h1 class="h3 mb-0">Internship Details</h1>
+    
+                        <!-- Advanced filter responsive toggler START -->
+                        <button class="btn btn-primary d-lg-none flex-shrink-0 ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                            <i class="fas fa-sliders-h"></i> Menu
+                        </button>
+                     <!-- Advanced filter responsive toggler END -->
+                    </div>
+                    {% for assigned_internship in assigned_internship %}
+                    <div class="card border">
+                        <!-- Card header -->
+                        <div class="card-header border-bottom d-sm-flex justify-content-between align-items-center">
+                            <h5 class="mb-2 mb-sm-0">{{assigned_internship.offer_letter.certificate_id}}</h5>
+                            <a href="/{{assigned_internship.offer_letter.certificate_image}}" download class="btn btn-light mb-0"><i class="bi bi-file-earmark-pdf me-2"></i>Download OfferLetter</a>
+                        </div>
+    
+                        <!-- Card body -->
+                         
+                        <div class="card-body">
+                            <!-- Price info -->
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <!-- Date -->
+                                <div class="mb-3 mb-sm-0">
+                                    
+                                    <h6>{{assigned_internship.internship.title}}</h6>
+                                    <p class="mb-0">Start Date: <span class="fw-semibold">{{assigned_internship.start_date}}</span></p>
+                                </div>
+    
+                                
+                            </div>
+    
+                            <!-- Content -->
+                            <div class="mt-5">
+                                <!-- Usage -->
+                                <div class="d-sm-flex justify-content-between mb-3">
+                                    <p class="heading-color fw-bold mb-2 mb-sm-0">Current Level</p>
+                                    <p class="mb-0">
+                                        <span class="heading-color fw-bold">{{ completed_count }}</span> of 
+                                        {{ assigned_internship.internship.no_of_weeks }} Report Completed
+                                    </p>
+                                </div>
+                                <!-- Progress bar -->
+                                <div class="progress-stacked h-100 mb-2">
+                                    <div class="progress progress-md" role="progressbar" aria-label="Segment one" aria-valuenow="{{ progress_percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress_percentage }}%">
+                                        <div class="progress-bar rounded-0"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% if progress_percentage == 100 %}
+
+                            {% if certificate %}
+                            {% for certificate in certificate %}
+                            <div class="d-grid d-sm-flex justify-content-sm-end gap-2 gap-sm-3 mt-4">
+                                <a href="/{{ certificate.certificate_image }}" download class="btn btn-dark mb-0">Download Certificate</a>
+                                
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <div class="d-grid d-sm-flex justify-content-sm-end gap-2 gap-sm-3 mt-4">
+                                <button id="generate-certificate-btn" class="btn btn-success mb-0" data-user-id="{{ user.id }}" data-internship-slug="{{ assigned_internship.internship.slug }}" data-internship-assigned="{{assigned_internship.id}}">Generate Certificate</button>
+                            </div>
+                            {% endif %}
+
+
+                            
+                            {% else %}
+                            <div class="d-grid d-sm-flex justify-content-sm-end gap-2 gap-sm-3 mt-4">
+                                <button class="btn btn-success mb-0" disabled>Generate Certificate</button>
+                            </div>
+                            {% endif %}
+    
+                           
+                        </div>
+
+                        
+                        
+                    </div>
+                    {% endfor %}
+
+                    <div class="d-flex justify-content-between align-items-center mt-4 mb-4 mb-sm-6">
+                        <!-- Title -->
+                        <h1 class="h3 mb-0">Reports</h1>
+
+                    </div>
+
+                    <div class="table-responsive border-0">
+                        <table class="table align-middle p-4 mb-0 table-hover">
+                            <!-- Table head -->
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col" class="border-0 text-white">Report</th>
+                                    <th scope="col" class="border-0 text-white">Status</th>
+                                    <th scope="col" class="border-0 text-white">View Task</th>
+                                    <th scope="col" class="border-0 text-white rounded-end">Action</th>
+                                </tr>
+                            </thead>
+    
+                            <!-- Table body START -->
+                            <tbody>
+                                {% for report in report %}
+
+                                <!-- Table row -->
+                                <tr>
+                                    
+                                    <!-- Table data -->
+                                    <td>Week {{report.week_number}}</td>
+    
+                                    <!-- Table data -->
+                                    <td>
+                                        {% if report.submission == "Pending" %}
+                                        <i class="fa-solid fa-circle fa-2xs text-warning me-2"></i>
+                                        {% elif report.submission == "Completed" %}
+                                        <i class="fa-solid fa-circle fa-2xs text-success me-2"></i>
+                                        {% elif report.submission == "Rewrite" %}
+                                        <i class="fa-solid fa-circle fa-2xs text-danger me-2"></i>
+                                        {% elif report.submission == "Rejected" %}
+                                        <i class="fa-solid fa-circle fa-2xs text-danger me-2"></i>
+                                        {% endif %}
+                                        {{report.submission}}
+                                        
+                                    </td>
+    
+                                    <!-- Table data -->
+                                    <td>
+                                        {% if report.submission == "Completed" %}
+                                            <button class="btn btn-sm btn-dark me-1 mb-1 mb-md-0" disabled><i class="bi bi-eye"></i> View Task</button>
+                                            {% else %}
+                                            {% if report.week_number == 1 or report.week_number|add:"-1" in completed_weeks %}
+                                            <a href="{% url 'download_task' report.internship_assigned.internship.id report.week_number %}" target="_blank" class="btn btn-sm btn-dark me-1 mb-1 mb-md-0" ><i class="bi bi-eye"></i> View Task</a>
+                                            {% else %}
+                                            <button class="btn btn-sm btn-dark me-1 mb-1 mb-md-0" disabled><i class="bi bi-eye"></i> View Task</button>
+                                            {% endif %}
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        {% if report.submission == "Completed" %}
+
+                                            {% if report.report %}
+                                            <button class="btn btn-sm btn-dark me-1 mb-1 mb-md-0" disabled><i class="bi bi-pencil-square"></i></button>
+                                            {% else %}
+                                            <button class="btn btn-sm btn-success border me-1 mb-1 mb-md-0" disabled><i class="bi bi-check2-square"></i> Upload</button>
+                                            {% endif %}
+                                            {% else %}
+
+                                            {% if report.week_number == 1 or report.week_number|add:"-1" in completed_weeks %}
+                                            {% if report.report %}
+                                            <a class="btn btn-sm btn-dark me-1 mb-1 mb-md-0" href="{% url "internship_report_upload" report.internship_assigned.id report.week_number   %}" ><i class="bi bi-pencil-square"></i></a>
+                                            {% else %}
+                                            <a class="btn btn-sm btn-success border me-1 mb-1 mb-md-0" href="{% url "internship_report_upload" report.internship_assigned.id report.week_number   %}"><i class="bi bi-check2-square"></i> Upload</a>
+                                            {% endif %}
+                                            {% else %}
+                                            {% if report.report %}
+                                            <button class="btn btn-sm btn-dark me-1 mb-1 mb-md-0" disabled><i class="bi bi-pencil-square"></i></button>
+                                            {% else %}
+                                            <button class="btn btn-sm btn-success border me-1 mb-1 mb-md-0" disabled><i class="bi bi-check2-square"></i> Upload</button>
+                                            {% endif %}
+                                            {% endif %}
+
+                                        {% endif %}
+                                    </td>
+                                    
+                                </tr>
+    
+                                {% endfor %}
+                            </tbody>
+
+
+                                <!-- Modal HTML -->
+
+                            <!-- Table body END -->
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+
+
+</main>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('generate-certificate-btn').addEventListener('click', function() {
+            var userId = this.getAttribute('data-user-id');
+            var internshipSlug = this.getAttribute('data-internship-slug');
+            var internshipAssigned = this.getAttribute('data-internship-assigned');
+            var url = '/intern_dash/generate_certificate/' + userId + '/' + internshipSlug + '/' + internshipAssigned + '/';
+
+            // Show preloader
+            document.getElementById('preloader').style.display = 'block';
+
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken') // If CSRF token is required
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => { throw new Error(text); });
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === 'success') {
+                    alert(data.message);
+                    // Refresh the page after success
+                    window.location.reload();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('An error occurred while making the request: ' + error);
+            })
+            .finally(() => {
+                // Hide preloader
+                document.getElementById('preloader').style.display = 'none';
+            });
+        });
+
+        // Function to get CSRF token from cookie
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; cookies.length > i; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    });
+</script>
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

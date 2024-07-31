@@ -1,0 +1,50 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Verify Internship At Nexel</title>
+<!-- Meta Description -->
+<meta name="description" content="Join us today for rewarding internship opportunities and growth.">
+<!-- Meta Keywords (Note: Meta keywords are not as relevant for SEO as they used to be) -->
+<meta name="keywords" content="Software engineering internships, tech internship program, internship opportunities, coding internships, software development experience, Nexel, technology careers, hands-on learning">
+
+
+{% endblock head %}
+
+
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+<main>
+    {% for certificate in certificate %}
+    <section class="pt-lg-8">
+        <div class="container position-relative pt-4 pt-lg-0">
+            <div class="row align-items-center">
+    
+                <div class="col-lg-5 mb-5 mb-md-0">
+                    <h1 class="mb-4">Congratulations</h1>
+                    <p class="mb-4"><b>Certificate ID:</b> {{certificate.certificate_id}}<br><b> Name:</b> {{certificate.name}}<br><b>Email:</b> {{certificate.email}}<br><b>Internship For:</b> {{certificate.internship_for.title}}<br><b>Date of Issue: </b>{{certificate.date_of_issue}}</p>
+                    <a href="http://127.0.0.1:6511/{{certificate.certificate_image}}" download class="btn btn-lg btn-dark mb-0">Download Now</a>
+                </div>
+    
+                <!-- Image -->
+                <div class="col-lg-6 ms-auto">
+                    <div class="position-relative pe-4 pe-sm-6">
+                        <!-- Bg dark pattern -->
+                        <div class="bg-dark rounded position-absolute top-0 end-0 w-50 h-100" style="background-image:url(assets/images/elements/bg-pattern-2.png); background-position: center left; background-size: cover;"></div>
+    
+                        <img src="http://127.0.0.1:6511/{{certificate.certificate_image}}" class="rounded-4 border border-dark border-5 my-4 my-sm-6 position-relative" alt="saas-img">
+                        
+                    </div>
+                </div>
+    
+            </div>
+        </div>	
+    </section>
+    {% endfor %}
+    
+</main>
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

@@ -1,0 +1,66 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Intern Dashboard</title>
+
+{% endblock head %}
+
+
+{% block head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+{% endblock head %}
+
+
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+
+<main>
+    <section class="pt-sm-7">
+        <div class="container pt-3 pt-xl-5">
+            <div class="row">
+                {% include "career_dashboard/sidebar.html" %}
+                <!-- Main content -->
+                <div class="col-lg-8 col-xl-9 ps-lg-4 ps-xl-6">
+                    <!-- Title and offcanvas button -->
+                    <div class="d-flex justify-content-between align-items-center  mb-5">
+                        <!-- Title -->
+                        <h1 class="h3 mb-0">{{resources.title}}</h1>
+    
+                        <!-- Advanced filter responsive toggler START -->
+                        <button class="btn btn-primary d-lg-none flex-shrink-0 ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                            <i class="fas fa-sliders-h"></i> Menu
+                        </button>
+                     <!-- Advanced filter responsive toggler END -->
+                    </div>
+
+                
+
+
+                    <pre><code class="python">{{ resources.code|safe }}</code></pre>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+                    <script>hljs.highlightAll();</script>
+
+                    
+
+                    {{resources.des|safe}}
+
+
+                    
+
+
+                    
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+

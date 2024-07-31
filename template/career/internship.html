@@ -1,0 +1,176 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+<title>Internship Opportunities: Join Our Team Today!</title>
+<!-- Meta Description -->
+<meta name="description" content="Join us today for rewarding internship opportunities and growth.">
+<meta name="keywords" content="Software engineering internships, tech internship program, internship opportunities, coding internships, software development experience, Nexel, technology careers, hands-on learning">
+<meta name="location" content="Mangalore, Karnataka, India">
+<meta name="author" content="Nexel-Futureize the Innovation">
+
+	<!-- Social Media Meta Tags -->
+	<meta property="og:title" content="Nexel: Internship Opportunities">
+	<meta property="og:description" content="Software engineering internships, tech internship program, internship opportunities, coding internships, software development experience, Nexel, technology careers, hands-on learning">
+	<meta property="og:image" content=""> <!-- Add URL to your company logo or relevant image -->
+	<meta property="og:url" content="https://www.nexel.in/career/internship">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<!--Twitter-card-->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Nexel: Internship Opportunities">
+	<meta name="twitter:description" content="Software engineering internships, tech internship program, internship opportunities, coding internships, software development experience, Nexel, technology careers, hands-on learning.">
+	<meta name="twitter:image" content="">
+
+	<!-- Schema Markup for Local Business -->
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org",
+			"@type": "LocalBusiness",
+			"name": "Nexel: Internship Opportunities",
+			"description": "Software engineering internships, tech internship program, internship opportunities, coding internships, software development experience, Nexel, technology careers, hands-on learning.",
+			"url": "https://www.nexel.in/career/internship",
+			"logo": "{% static 'assets/images/favicon.ico' %}",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Mangalore",
+				"addressRegion": "Karnataka",
+				"postalCode": "570001",
+				"addressCountry": "India"
+			},
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"telephone": "+91-9778165158",
+				"contactType": "customer service"
+			}
+		}
+	</script>
+
+{% endblock head %}
+
+
+{% block body %}
+{% include "base/navbar_light.html" %}
+
+
+
+<main>
+
+    <!-- =======================
+    Main Banner START -->
+    <section class="pt-8">
+        <div class="container">
+            <!-- Main title and search -->
+            <div class="inner-container text-center mb-6">
+                <!-- Title -->
+                <h1 class="mb-0 lh-base position-relative">
+                    <!-- SVG decoration -->
+                    <span class="position-absolute top-0 start-0 mt-n5 ms-n5 d-none d-sm-block">
+                        <svg class="fill-primary" width="63.6px" height="93.3px" viewBox="0 0 63.6 93.3" style="enable-background:new 0 0 63.6 93.3;" xml:space="preserve">
+                            <path d="M58.5,1.9c0.5,0,1.6,5.3,2.4,11.8c0.8,6.5,1.4,14,1.6,18.5c0.3,8.8-0.5,15.9-1.6,16c-1.1,0-2.1-7.1-2.4-15.8 c-0.2-4.4-0.3-12-0.4-18.4C57.9,7.3,57.9,1.9,58.5,1.9z"></path>
+                            <path d="M47.7,44.4c-0.5,0.1-1.5-2.1-2.8-4.7c-1.3-2.6-2.8-5.5-3.7-7.2c-1.7-3.4-2.9-6.4-2.1-7c0.8-0.6,3.4,1.5,5.3,5.1 c1,1.8,2.2,5.1,2.9,8.1C48.1,41.8,48.2,44.3,47.7,44.4z"></path>
+                            <path d="M36.2,53.4c-0.2,0.5-4.1-1.2-8.5-3.5c-4.4-2.3-9.5-5.4-12.3-7.3c-5.6-3.9-9.6-7.9-9-8.8c0.6-0.9,5.4,1.7,11,5.5 c2.8,1.9,7.5,5.3,11.6,8.2C33.1,50.5,36.4,53,36.2,53.4z"></path>
+                            <path d="M27.2,68.3c-0.1,0.5-2.1,0.7-4.4,0.6c-2.4,0-5.1-0.3-6.7-0.7c-3.1-0.6-5.4-2-5.2-3c0.2-1,2.9-1.2,5.9-0.5 c1.5,0.3,4.1,1,6.3,1.7C25.4,67.1,27.2,67.8,27.2,68.3z"></path>
+                            <path d="M30.8,83.2c0.1,0.5-3.5,1.7-7.7,3.1c-4.3,1.4-9.2,3.1-12.1,4.1c-5.7,1.9-10.6,3.1-11,2.1 c-0.4-0.9,3.9-3.6,9.8-5.6c2.9-1,8.1-2.4,12.6-3.2C26.9,83,30.7,82.7,30.8,83.2z"></path>
+                        </svg>
+                    </span>
+                    Join NEXEL: Premier Internship Opportunities for Top Interns
+                </h1>
+    
+                <!-- Search -->
+                <form class="col-md-7 bg-light border rounded-2 position-relative mx-auto p-2 mt-4 mt-md-5">
+                    <div class="input-group">
+                        <input id="searchInput" class="form-control focus-shadow-none bg-light border-0 me-1" type="text" placeholder="Search Internship">
+                        <button type="button" id="searchButton" class="btn btn-dark rounded-2 mb-0"><i class="bi bi-search me-2"></i>Search</button>
+                    </div>
+                </form>
+            </div>
+    
+        </div>
+    </section>
+    <!-- =======================
+    Main Banner END -->
+    
+    <section class="pb-8 pt-0" >
+        <div class="container">
+            <!-- Projects -->
+            <div class="row g-4 g-lg-5 justify-content-center">
+
+                {% for data in data %}
+                    <!-- Card item -->
+                    <div class="col-md-6 col-lg-4 card-item" data-title="{{ data.title|lower }}">
+                        <div class="card card-img-scale card-element-hover overflow-hidden">
+                            <!-- Card image -->
+                            <div class="card-img-scale-wrapper">
+                                <!-- Hover elements -->
+                                <div class="card-img-overlay hover-element d-flex align-items-center justify-content-center">
+                                    <!-- Client image -->
+                                    <img src="{% static 'assets/image/banner/logo/nexel_light.png' %}" class="h-40px z-index-2" alt="client logo">
+                                    <!-- BG overlay -->
+                                    <div class="bg-overlay bg-dark opacity-7"></div>
+                                </div>
+                                <!-- Case studie image -->
+                                <img src="{{ data.img.url }}" class="img-scale card-img-top" alt="portfolio-img">
+                            </div>
+
+                            <div class="card-body">
+                                <h6 class="card-title mb-2">{{ data.title }}</h6>
+                                <p class="card-text mb-3 truncate-2-lines">{{ data.shortdes }}</p>
+                                <!-- Badge list -->
+                                <div class="hstack flex-wrap gap-2 mb-4">
+                                    <div class="badge border heading-color bg-light">{{ data.duration }}</div>
+                                    <div class="badge border heading-color bg-light">{{ data.mode }}</div>
+                                    <div class="badge border heading-color bg-light">{{ data.stipend }}</div>
+                                </div>
+                                <!-- Button -->
+                                <a href="{% url 'career_internship_details' data.slug %}" class="text-primary-hover stretched-link heading-color mb-0">View Details<i class="fa-solid fa-arrow-right-long fa-fw ms-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div id="noResults" class="col-12 text-center d-none">No internships found.</div>
+            </div>
+            
+        </div>
+
+    </section>
+  
+    
+    </main>
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.card-item');
+            let found = false;
+    
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title');
+                if (title.includes(searchInput)) {
+                    card.style.display = 'block';
+                    found = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+    
+            const noResults = document.getElementById('noResults');
+            if (found) {
+                noResults.classList.add('d-none');
+            } else {
+                noResults.classList.remove('d-none');
+            }
+        });
+    
+        // Optionally, you can trigger the search on enter key press
+        document.getElementById('searchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                document.getElementById('searchButton').click();
+            }
+        });
+    </script>
+    
+
+
+{% include "base/footer_dark.html" %}
+{% endblock body %}
+
